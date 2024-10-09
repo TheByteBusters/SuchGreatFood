@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Este es un proyecto de Ecommerce de un local de comida llamado Such Great Food. Permite a los usuarios ver los productos ofrecidos, agregarlos al carrito, pagarlos y pedir el envío a domicilio.",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
     "accepts": "^1.3.8",
     "array-flatten": "^1.1.1",
@@ -13,6 +14,7 @@
     "content-type": "^1.0.5",
     "cookie": "^0.6.0",
     "cookie-signature": "^1.0.6",
+    "cors": "^2.8.5",
     "debug": "^2.6.9",
     "define-data-property": "^1.1.4",
     "depd": "^2.0.0",
