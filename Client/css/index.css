@@ -1,11 +1,41 @@
-
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ff0000;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
 
 
 
 
 
 /* PANTALLA GRANDE */
-@media (min-width: 1000px)  {
+@media (min-width: 500px)  {
+
+    header {
+        font-weight: 900;
+        text-transform: uppercase;
+    }
+
+    .login-register {
+        margin: 2rem auto;
+    }
+
+    .login-register button {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 10px;
+        margin: 10px;
+        cursor: pointer;
+        text-transform: uppercase;
+        font-weight: 700;
+    }
+
+    .login-register button:hover {
+        background-color: #fff;
+
+    }
+
 
     
 }
@@ -13,7 +43,39 @@
 
 
 /* CELULAR */
-@media (max-width: 1000px) {
+@media (max-width: 500px) {
 
+
+    header {
+        font-weight: 700;
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    header h1 {
+        font-size: 1rem;
+    }
+
+    header img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .login-register {
+        margin: 1rem auto;
+    }
+
+    .login-register button {
+        padding: 5px 10px;
+        border: none;
+        border-radius: 10px;
+        margin: 10px auto;
+        text-transform: uppercase;
+        font-weight: 100;
+        display: block;
+
+    }
+
+    
 
 }
