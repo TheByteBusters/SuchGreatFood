@@ -1,19 +1,37 @@
 import express from "express";
 import cors from "cors";
-import authRoutes from "./routes/authRoutes.js"; // Importar las rutas de autenticación
-import db from "./db/dbConnection.js"; // Importar la conexión a la base de datos
+import path from "path";
+import { fileURLToPath } from 'url'; // Para resolver correctamente las rutas en ES6
+import { registerUser } from "./controllers/registerController.js";
+import { loginUser } from "./controllers/loginController.js";
 
 const app = express();
 const port = 8080;
 
+// Obtener el directorio actual en ES6
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-// Rutas de autenticación
-app.use("/auth", authRoutes);
+// Servir archivos estáticos desde la carpeta Client
+app.use(express.static(path.join(__dirname, '../Client/testing')));
+
+// Ruta para servir el formulario de login
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../Client/testing/testLogin.html'));
+});
+
+// Ruta para registrar un usuario
+app.post('/register', registerUser);
+
+// Ruta para manejar el inicio de sesión
+app.post('/login', loginUser);
 
 // Iniciar el servidor
 app.listen(port, () => {
-  console.log(`Servidor corriendo en el puerto ${port}`);
+  console.log(`Servidor corriendo en http://localhost:${port}`);
 });
