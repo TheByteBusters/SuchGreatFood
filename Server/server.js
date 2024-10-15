@@ -2,6 +2,10 @@ import express from "express";
 import cors from "cors";
 import mysql from "mysql2";
 import bcrypt from "bcrypt"; // bcrypt
+import dotenv from "dotenv";
+
+// Cargar variables de entorno desde el archivo .env
+dotenv.config();
 
 const app = express();
 const port = 8080;
@@ -11,10 +15,10 @@ app.use(express.json());
 
 // Configuración de la conexión a MySQL
 const db = mysql.createConnection({
-    host: '192.168.0.107',
-    user: 'Brian', // usuario de MySQL
-    password: 'Brian12345', // contraseña de MySQL
-    database: 'basededatos1', // base de datos
+    host: process.env.DB_HOST || '192.168.0.107',
+    user: process.env.DB_USER || 'Brian', // usuario de MySQL
+    password: process.env.DB_PASSWORD || 'Brian12345', // contraseña de MySQL
+    database: process.env.DB_NAME || 'basededatos1', // base de datos
 });
 
 // Conectar a MySQL
@@ -28,37 +32,6 @@ db.connect((err) => {
 
 app.get("/", (req, res) => {
     res.send("SERVER ACTIVADO");
-});
-
-app.post("/create_preference", async (req, res) => {
-    try {
-        const body = {
-            items: [
-                {
-                    title: req.body.title,
-                    quantity: Number(req.body.quantity),
-                    unit_price: Number(req.body.price),
-                    currency_id: "ARS",
-                },
-            ],
-            back_urls: {
-                success: "https://campus.frsr.utn.edu.ar/moodle/mod/quiz/view.php?id=47895",
-                failure: "https://campus.frsr.utn.edu.ar/moodle/mod/quiz/view.php?id=47895",
-                pending: "https://campus.frsr.utn.edu.ar/moodle/mod/quiz/view.php?id=47895",
-            },
-            auto_return: "approved",
-        };
-        const preference = new Preference(client);
-        const result = await preference.create({ body });
-        res.json({
-            id: result.id,
-        });
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            error: "Error al crear la preferencia"
-        });
-    }
 });
 
 // Ruta para agregar un producto
@@ -123,4 +96,3 @@ app.get("/usuarios/:id", (req, res) => {
 app.listen(port, () => {
     console.log(`El servidor está corriendo en el puerto ${port}`);
 });
-
