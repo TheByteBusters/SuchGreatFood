@@ -20,12 +20,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Servir archivos estáticos desde la carpeta Client
-app.use(express.static(path.join(__dirname, '../Client/testing')));
+app.use(express.static(path.join(__dirname, '../Client')));
 
 // Ruta para servir el formulario de login
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../Client/testing/testLogin.html'));
+  res.sendFile(path.join(__dirname, '../Client/index.html'));
 });
+
 
 // Ruta para registrar un usuario
 app.post('/register', registerUser);
