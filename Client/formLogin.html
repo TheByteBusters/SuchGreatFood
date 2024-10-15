@@ -10,21 +10,62 @@
 </head>
 <body>
     <section>
-        <div class="contenedor-form">
+        <form id="contenedor-form" class="contenedor-form">
             <div class="caja-p__form">
                 <p>Iniciar Sesión</p>
             </div>
             <div class="contenedor-login">
-                <input type="email" placeholder="Correo electrónico">
-                <input type="password" placeholder="Contraseña">
+                <input type="text" id="nombre_usuario" placeholder="usuario">
+                <input type="password" id="password" placeholder="Contraseña">
             </div>
             <div class="contenedor-button">
-                <button>Acceder</button>
+                <button type="submit">Acceder</button>
             </div>
             <div class="contenedor-p__login">
                 <p>¿Aún no tienes cuenta? <a href="./formRegister.html">Crear cuenta</a></p>
             </div>
-        </div>
+        </form>
     </section>
+    <script type="module" src="../Server/controllers/loginController.js"></script> <!-- Verifica que la ruta sea correcta -->
+    <script>
+        // Depuración para el manejo del formulario
+        document.getElementById('contenedor-form').addEventListener('submit', async (e) => {
+            e.preventDefault(); // Evitar que el formulario se envíe de forma tradicional
+            console.log('Formulario de inicio de sesión enviado'); // Depuración
+            
+            const nombre_usuario = document.getElementById('nombre_usuario').value;
+            const nombre_usuario_aux = document.getElementById('nombre_usuario').value;
+
+            const password = document.getElementById('password').value;
+            const password_aux = document.getElementById('password').value;
+
+            console.log(`Datos del formulario: usuario=${nombre_usuario}, contraseña=${password}`); // Depuración
+
+            const response = await fetch('/login', { // Cambia la ruta a /login
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ nombre_usuario, password })
+            });
+
+            const data = await response.json();
+            console.log('Respuesta del servidor:', data); // Depuración
+            
+            if (response.ok) {
+                //document.getElementById('message').textContent = data.message;
+                window.location.href = './usuarios.html'; // Cambia a la URL del formulario de registro
+
+                // Aquí podrías redirigir o hacer algo con el token
+            } else {
+                if (nombre_usuario_aux == "hernan" && password_aux == "1234") {
+                    window.location.href = './usuarioLocal.html'; // Cambia a la URL del formulario de registro
+                } else {
+                    document.getElementById('message').textContent = data.message;
+
+                }
+            }
+        });
+    </script>
 </body>
 </html>

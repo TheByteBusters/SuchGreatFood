@@ -4,10 +4,10 @@ const registerButton = document.getElementById('registerBtn');
 
 // Agrega el evento de clic para el botón de inicio de sesión
 loginButton.addEventListener('click', () => {
-  window.location.href = '../testing/testLogin.html'; // Cambia a la URL del formulario de inicio de sesión
+  window.location.href = '../formLogin.html'; // Cambia a la URL del formulario de inicio de sesión
 });
 
 // Agrega el evento de clic para el botón de registro
 registerButton.addEventListener('click', () => {
-  window.location.href = '../testing/testRegister.html'; // Cambia a la URL del formulario de registro
+  window.location.href = '../formRegister.html'; // Cambia a la URL del formulario de registro
 });

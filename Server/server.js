@@ -27,6 +27,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../Client/index.html'));
 });
 
+
 // Ruta para registrar un usuario
 app.post('/register', registerUser);
 

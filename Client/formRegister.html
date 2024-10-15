@@ -10,22 +10,42 @@
 </head>
 <body>
     <section>
-        <div class="contenedor-form">
+        <form id="registerForm" action="/register" method="POST" class="contenedor-form">
             <div class="caja-p__form">
                 <p>Registro</p>
             </div>
             <div class="contenedor-register">
-                <input type="text" placeholder="Nombre y apellido">
-                <input type="email" placeholder="Correo electrónico">
-                <input type="password" placeholder="Contraseña">
+                <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Usuario">
+                <input type="password" id="password" name="password" placeholder="Contraseña">
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido">
+                <input type="email" id="email" name="email" placeholder="Correo electrónico">
+                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono">
             </div>
             <div class="contenedor-button">
-                <button>Registrarse</button>
+                <button type="submit">Registrarse</button>
             </div>
             <div class="contenedor-p__register">
                 <p>¿Ya tienes cuenta? <a href="./formLogin.html">Acceder</a></p>
             </div>
-        </div>
+        </form>
     </section>
+    <script>
+        // Evitar el comportamiento por defecto del formulario si quieres hacer un envío usando Fetch API
+        document.getElementById('registerForm').addEventListener('submit', async function(e) {
+          e.preventDefault();
+          
+          const formData = new FormData(this);
+          const data = Object.fromEntries(formData.entries());
+    
+          const response = await fetch('/register', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+          });
+    
+          const result = await response.json();
+          alert(result.message);  // Mostrar el mensaje de éxito o error
+        });
+      </script>
 </body>
 </html>
