@@ -4,6 +4,8 @@ import path from "path";
 import { fileURLToPath } from 'url'; // Para resolver correctamente las rutas en ES6
 import { registerUser } from "./controllers/registerController.js";
 import { loginUser } from "./controllers/loginController.js";
+import { getProducts } from "./controllers/productController.js";
+
 
 const app = express();
 const port = 8080;
@@ -30,6 +32,9 @@ app.post('/register', registerUser);
 
 // Ruta para manejar el inicio de sesión
 app.post('/login', loginUser);
+
+// Manejar productos en la API
+app.get('/products', getProducts); // Si tienes productos
 
 // Iniciar el servidor
 app.listen(port, () => {
