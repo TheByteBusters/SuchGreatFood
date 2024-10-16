@@ -1,3 +1,4 @@
+<!---ARCHIVO usuarios-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,11 +57,19 @@
         </div>
     </div>
 
+    <button id="logout">Cerrar Sesión</button>
 
 
     <footer>
         <p>&copy; 2024 Such Great Food. Todos los derechos reservados.</p>
     </footer>
-    
+    <script src="./js/authentication.js"></script>
+    <script>
+        document.getElementById('logout').addEventListener('click', () => {
+        sessionStorage.removeItem('token'); // Elimina el token
+        window.location.href = './index.html'; // Redirige a la página de inicio de sesión
+    });
+    </script>
+    </script>
 </body>
 </html>

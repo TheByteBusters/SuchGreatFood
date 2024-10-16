@@ -26,7 +26,7 @@
             </div>
         </form>
     </section>
-    <script type="module" src="../Server/controllers/loginController.js"></script> <!-- Verifica que la ruta sea correcta -->
+    <!---<script type="module" src="../Server/controllers/loginController.js"></script> <!-- Verifica que la ruta sea correcta -->
     <script>
         // Depuración para el manejo del formulario
         document.getElementById('contenedor-form').addEventListener('submit', async (e) => {
@@ -54,11 +54,14 @@
             
             if (response.ok) {
                 //document.getElementById('message').textContent = data.message;
+                sessionStorage.setItem('token', data.token); // Asegúrate de que el servidor envíe el token
                 window.location.href = './usuarios.html'; // Cambia a la URL del formulario de registro
 
                 // Aquí podrías redirigir o hacer algo con el token
             } else {
                 if (nombre_usuario_aux == "hernan" && password_aux == "1234") {
+                    sessionStorage.setItem('token', data.token); // Asegúrate de que el servidor envíe el token
+
                     window.location.href = './usuarioLocal.html'; // Cambia a la URL del formulario de registro
                 } else {
                     document.getElementById('message').textContent = data.message;
