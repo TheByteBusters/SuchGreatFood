@@ -1,3 +1,4 @@
+// ARCHIVO server
 import express from "express";
 import cors from "cors";
 import path from "path";
@@ -5,6 +6,7 @@ import { fileURLToPath } from 'url'; // Para resolver correctamente las rutas en
 import { registerUser } from "./controllers/registerController.js";
 import { loginUser } from "./controllers/loginController.js";
 import { getProducts } from "./controllers/productController.js";
+import { verifyToken } from "./authMiddleware.js";
 
 
 const app = express();
@@ -25,6 +27,15 @@ app.use(express.static(path.join(__dirname, '../Client')));
 // Ruta para servir el formulario de login
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../Client/index.html'));
+});
+
+app.get('/usuarios.html', verifyToken, (req, res) => {
+  res.sendFile(path.join(__dirname, '../Client/usuarios.html'));
+});
+
+// Ruta para acceder a usuarioLocal (requiere autenticación)
+app.get('/usuarioLocal.html', verifyToken, (req, res) => {
+  res.sendFile(path.join(__dirname, '../Client/usuarioLocal.html'));
 });
 
 
