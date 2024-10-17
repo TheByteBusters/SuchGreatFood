@@ -7,10 +7,13 @@ import { registerUser } from "./controllers/registerController.js";
 import { loginUser } from "./controllers/loginController.js";
 import { getProducts } from "./controllers/productController.js";
 import { verifyToken } from "./authMiddleware.js";
+import dotenv from "dotenv";
 
+
+dotenv.config();
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 // Obtener el directorio actual en ES6
 const __filename = fileURLToPath(import.meta.url);
