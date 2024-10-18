@@ -9,17 +9,19 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <section>
+    <section id="registerSection">
         <form id="registerForm" action="/register" method="POST" class="contenedor-form">
             <div class="caja-p__form">
                 <p>Registro</p>
             </div>
             <div class="contenedor-register">
-                <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Usuario">
-                <input type="password" id="password" name="password" placeholder="Contraseña">
-                <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido">
-                <input type="email" id="email" name="email" placeholder="Correo electrónico">
-                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono">
+                <input type="text" id="nombre_usuario" name="nombre_usuario" placeholder="Usuario" required>
+                <input type="password" id="password" name="password" placeholder="Contraseña" required>
+                <input type="text" id="nombre" name="nombre" placeholder="Nombre y apellido" required>
+                <input type="email" id="email" name="email" placeholder="Correo electrónico" required>
+                <input type="tel" id="telefono" name="telefono" placeholder="Teléfono" required>
+                
+            <label class="terminosCondiciones" for="aceptoTerminos"><button id="verTerminos" class="terminosCondiciones-button">Aceptar TERMINOS Y CONDICIONES</button><input type="checkbox" id="aceptoTerminos" required></label>
             </div>
             <div class="contenedor-button">
                 <button type="submit">Registrarse</button>
@@ -29,6 +31,106 @@
             </div>
         </form>
     </section>
+
+    <!-- Modal de Términos y Condiciones -->
+    <div id="modalTerminos" class="modal">
+        <div class="modal-content">
+            <h3>Términos y Condiciones de Uso</h3>
+            <p>
+                
+<p>Fecha de vigencia: <strong>[Fecha actual]</strong></p>
+
+<p>Bienvenido a <strong>[Nombre del Ecommerce]</strong> (“la Plataforma”), un sitio web dedicado a la comercialización de productos alimenticios con la opción de pago en línea y delivery. Al registrarte y utilizar nuestra Plataforma, aceptas estos términos y condiciones de uso, que constituyen un acuerdo legal entre <strong>[Nombre del Ecommerce]</strong> y tú (“el Usuario”).</p>
+
+<h4>1. Aceptación de los Términos</h4>
+<p>Al registrarte, acceder o utilizar la Plataforma, declaras que has leído y aceptado los presentes Términos y Condiciones. Si no estás de acuerdo con alguno de estos términos, no debes utilizar la Plataforma.</p>
+
+<h4>2. Registro de Usuario</h4>
+<p>Para acceder a los servicios de la Plataforma, el Usuario debe crear una cuenta proporcionando información veraz, actualizada y completa. El Usuario se compromete a mantener la confidencialidad de su contraseña y acepta la responsabilidad por todas las actividades realizadas bajo su cuenta.</p>
+
+<h4>3. Proceso de Compra y Pago</h4>
+<p>El Usuario podrá seleccionar productos del catálogo y realizar el pago mediante los medios habilitados en la Plataforma, como tarjetas de crédito, débito o billeteras electrónicas. Una vez completado el pago, el Usuario recibirá un correo electrónico de confirmación con los detalles de la compra.</p>
+<p>El Usuario se compromete a proporcionar información de pago válida. La falta de pago autorizado o cualquier irregularidad en la transacción permitirá a la Plataforma cancelar la compra.</p>
+
+<h4>4. Política de Delivery</h4>
+<p>El Usuario puede optar por el servicio de delivery al momento de la compra, indicando la dirección de envío. Los tiempos de entrega estimados se especifican en la Plataforma, pero pueden variar debido a circunstancias externas.</p>
+<p>El Usuario es responsable de asegurarse de que la dirección de entrega sea correcta. En caso de que no se pueda realizar la entrega por errores en la dirección proporcionada o porque no haya nadie disponible para recibir el pedido, se le cobrará un recargo por el reenvío.</p>
+
+<h4>5. Protección de Datos Personales</h4>
+<p>El tratamiento de los datos personales de los Usuarios se ajusta a lo dispuesto por la Ley de Protección de los Datos Personales (Ley 25.326) y demás normativa vigente en la República Argentina.</p>
+
+<h5>a. Recolección y Uso de Datos Personales</h5>
+<p>Los datos proporcionados por el Usuario en el registro y durante el uso de la Plataforma, como nombre, dirección, correo electrónico, número de teléfono y datos de pago, serán tratados con el único fin de procesar las compras, realizar el envío de los productos adquiridos y ofrecer un mejor servicio.</p>
+
+<h5>b. Derechos del Usuario</h5>
+<p>El Usuario tiene derecho a acceder, rectificar, actualizar y suprimir sus datos personales conforme a lo dispuesto en la Ley 25.326. Si deseas ejercer alguno de estos derechos, puedes comunicarte a través de nuestro correo: <strong>[correo electrónico de contacto]</strong>.</p>
+
+<h5>c. Seguridad de los Datos</h5>
+<p>La Plataforma se compromete a implementar las medidas técnicas y organizativas necesarias para garantizar la seguridad de los datos personales y evitar su adulteración, pérdida, consulta o tratamiento no autorizado.</p>
+
+<h5>d. Transferencia de Datos</h5>
+<p>No transferiremos tus datos personales a terceros sin tu consentimiento expreso, excepto en los casos establecidos por la ley o cuando sea necesario para la prestación del servicio (por ejemplo, a empresas de delivery).</p>
+
+<h4>6. Prohibiciones de Uso</h4>
+<p>El Usuario no podrá utilizar la Plataforma para ningún propósito ilícito, incluyendo pero no limitado a:</p>
+<ul>
+    <li>Fraude en los pagos.</li>
+    <li>Interferir en la operación de la Plataforma o acceder sin autorización a sus sistemas.</li>
+    <li>Distribuir contenido difamatorio, ofensivo o ilegal.</li>
+</ul>
+
+<h4>7. Modificaciones a los Términos</h4>
+<p><strong>[Nombre del Ecommerce]</strong> se reserva el derecho a modificar estos Términos y Condiciones en cualquier momento. Cualquier cambio será comunicado a través de la Plataforma. El uso continuo de la Plataforma después de la modificación implica la aceptación de los nuevos términos.</p>
+
+<h4>8. Ley Aplicable y Jurisdicción</h4>
+<p>Estos Términos y Condiciones se rigen por las leyes de la República Argentina. Cualquier controversia que surja en relación con estos términos se someterá a los tribunales competentes de la Ciudad Autónoma de Buenos Aires.</p>
+                <div class="contenedor-button">
+                    
+                    <button class="button" id="irARegistro">VOLVER</button>
+                </div>
+                </p>
+        </div>
+    </div>
+
+    <script>
+        // Obtener los elementos
+        const modalTerminos = document.getElementById('modalTerminos');
+        const registerSection = document.getElementById('registerSection');
+        const verTerminos = document.getElementById('verTerminos');
+        const irARegistro = document.getElementById('irARegistro');
+        const cerrarModal = document.getElementById('cerrarModal');
+
+        // Función para mostrar solo los términos y condiciones
+        verTerminos.addEventListener('click', function(e) {
+            e.preventDefault();
+            registerSection.style.display = 'none';  // Oculta el formulario de registro
+            modalTerminos.style.display = 'flex';   // Muestra el modal de términos y condiciones
+        });
+
+        // Función para mostrar el formulario de registro nuevamente
+        irARegistro.addEventListener('click', function(e) {
+            e.preventDefault();
+            modalTerminos.style.display = 'none';  // Oculta el modal de términos
+            registerSection.style.display = 'flex';  // Muestra el formulario de registro
+        });
+
+        // Función para cerrar el modal cuando el usuario hace clic en la "X"
+        cerrarModal.addEventListener('click', function() {
+            modalTerminos.style.display = 'none';
+            registerSection.classList.remove('hidden');
+        });
+
+        // También puedes permitir cerrar el modal haciendo clic fuera de la caja de contenido
+        window.addEventListener('click', function(event) {
+            if (event.target == modalTerminos) {
+                modalTerminos.style.display = 'none';
+                registerSection.classList.remove('hidden');
+            }
+        });
+    </script>
+</body>
+</html>
+
     <script>
         // Evitar el comportamiento por defecto del formulario si quieres hacer un envío usando Fetch API
         document.getElementById('registerForm').addEventListener('submit', async function(e) {
