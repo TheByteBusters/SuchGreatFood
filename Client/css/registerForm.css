@@ -25,10 +25,13 @@ section{
     width: 100%;
     height: 100px;
     display: flex;
+    margin: auto;
+
 }
 
 .caja-p__form p{
     margin: auto;
+    padding-bottom: 40px;
     font-size: 35px;
     color: rgb(182, 74, 24);
     font-weight: 500;
@@ -55,7 +58,7 @@ section{
 
 
 .contenedor-button{
-    margin-top: 30px;
+    margin-top: 50px;
     width: 100%;
     height: 70px;
     display: flex;
@@ -76,6 +79,7 @@ section{
 
 .contenedor-button button:hover{
     background-color: rgb(187, 71, 4);
+    cursor: pointer;
 }
 
 
@@ -93,4 +97,39 @@ section{
 .contenedor-p__register a{
     color: rgb(182, 74, 24);
     text-decoration: none;
+}
+.terminosCondiciones {
+    display: flex;
+    justify-content: left;
+    margin: auto;
+    width: 80%;
+    margin: auto;
+}
+.modal {
+    background-color: white;
+    display: NONE;
+}
+.modal-content {
+    margin: 60px;
+    text-align: justify;
+    font-family: Montserrat;
+    font-size: smaller;
+}
+.modal-content h3 {
+    font-size: 30px;
+    text-align: center;
+}
+.terminosCondiciones-button {
+    font-family: Montserrat;
+    color: rgb(182, 74, 24);
+    align-items: center;
+    font-size: 20;
+    font-weight: bolder;
+    display: flex;
+    border: none;
+    font-size: 12px;
+}
+.terminosCondiciones-button:hover {
+    cursor: pointer;
+    background-color: aliceblue;;
 }
