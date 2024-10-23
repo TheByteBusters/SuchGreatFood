@@ -1,96 +1,176 @@
-<!DOCTYPE html>
+<!--ARCHIVO usuario.html-->
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>APP PROYECTO ECOMMERCE</title>
-    <link rel="stylesheet" href="./css/usuarios.css">
+    <title>Such Great Food</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="./css/usuarios.css" />
+    <style>
+        #header h1 a {
+            transition: color 0.3s ease;
+        }
+        #header h1 a:hover {
+            color: #333333; /* Un tono más oscuro, ajuste según prefiera */
+        }
+    </style>
 </head>
 <body>
+    <div id="page-wrapper">
 
-    <header>
-        <h1>Bienvenidos a " Such Great Food "</h1>
-        <p>" ECOMMERCE de COMIDA y BEBIDAS "</p>
-        <img  class="logo" src="https://th.bing.com/th/id/OIG2.HdmZOAkDuP5oHg0YR_8v?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" style="border-radius: 50%;" >
-    </header>
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <!-- Logo -->
+                <a href="#" id="logo" style="display: block; margin-bottom: 20px; text-decoration: none; border: none;">
+                    <img src="imagenes/logo.jpg" alt="Logo de Such Great Food" style="width: calc(100% - 1cm); max-width: 150px;" />
+                </a>
+                <h1><a href="index.html">Such Great Food</a></h1>
+                <p>Mira nuestros nuevos productos y combos</p>
 
-    <navbar>
-        <img class="img-carrito" src="https://cdn-icons-png.flaticon.com/128/4655/4655563.png" width="40px" height="40px" alt="carrito de compras"></img>
-        <img class="img-menu" src="https://cdn-icons-png.flaticon.com/128/4543/4543046.png" width="40px" height="40px" alt="configuracion"></img>
-        <button class="cerrar-sesion">Cerrar Sesión</button>
-    </navbar>
+                <!-- Nav -->
+                <nav id="nav">
+                    <ul>
+                        <li><a href="index.html" class="icon solid fa-home"><span>Productos</span></a></li>
+                        <li><a href="#" class="icon fa-chart-bar"><span>Sobre nosotros</span></a></li>
+                        <li><a href="sidebar.html" class="icon solid fa-sitemap"><span>Carrito</span></a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
 
-    <div class="productos">
-        <h3>Lista de Productos</h3>
-        <div class="card-lista-productos">
+        <!-- Features -->
+        <section id="features">
+            <div class="container">
+                <header>
+                    <h2>¡Elige tu <strong>Pedido</strong>!</h2>
+                </header>
+                <div class="row">
+                    <div class="col-4 col-6-medium col-12-small">
+                        <section class="box" style="display: flex; flex-direction: column;">
+                            <div style="height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                <a href="#" class="image featured" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                    <img src="imagenes/Combos.png" alt="Combos" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+                                </a>
+                            </div>
+                            <header>
+                                <h3>Combos</h3>
+                            </header>
+                            <p>Deliciosas combinaciones a un <strong>precio especial</strong></p>
+                        </section>
+                    </div>
+                    <div class="col-4 col-6-medium col-12-small">
+                        <section class="box" style="display: flex; flex-direction: column;">
+                            <div style="height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                <a href="#" class="image featured" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                    <img src="imagenes/Hamburguesa.png" alt="Hamburguesa" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+                                </a>
+                            </div>
+                            <header>
+                                <h3>Hamburguesas</h3>
+                            </header>
+                            <p><strong>SIMPLE</strong> es mucho mejor </p>
+                        </section>
+                    </div>
+                    <div class="col-4 col-6-medium col-12-small">
+                        <section class="box" style="display: flex; flex-direction: column;">
+                            <div style="height: 300px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px;">
+                                <a href="#" class="image featured" style="width: 100%; height: 100%; display: flex; align-items: center; justify-content: center;">
+                                    <img src="imagenes/Snacks.png" alt="Snacks" style="max-width: 100%; max-height: 100%; object-fit: contain;" />
+                                </a>
+                            </div>
+                            <header>
+                                <h3>Snacks</h3>
+                            </header>
+                            <p>¡Podes elegir el que más te gusta!</p>
+                        </section>
+                    </div>
+                    <div class="col-12">
+                        <ul class="actions">
+                            <li><a href="#" class="button icon solid fa-file">MAS</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            <div class="card-productos">
-                <button class="agregar-al-carrito">➕</button>
-                <img src="https://th.bing.com/th/id/OIP.R7fN46Xnw1muM9zGIsYp2QAAAA?w=147&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" width="150px" height="150px" alt="Nombre del producto">
-                <p>PRECIO DEL PRODUCTO: $</p>
-                <p>NOMBRE DEL PRODUCTO:</p>
-                <p>DETALLES DEL PRODUCTO: </p>
-                <p>INGREDIENTES DEL PRODUCTO: </p>
-                <ul>
-                    <li>INGREDIENTE N°1</li>
-                    <li>INGREDIENTE N°2</li>
-                    <li>INGREDIENTE N°3</li>
+        <!-- Banner -->
+        <section id="banner" style="background-image: url('imagenes/Banner.avif'); background-size: contain; background-position: center; padding: 60px 0; color: rgb(0, 0, 0); text-shadow: 2px 2px 4px rgba(0,0,0,0.5); width: 100%; overflow: hidden;">
+            <div class="container" style="position: relative; z-index: 1; text-align: center;">
+                <p>Empezá tu semana <strong>con una buena comida</strong></p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <section id="footer">
+            <div class="container">
+                <header>
+                    <h2>Escribinos <strong>Queremos saber tu opinión:</strong></h2>
+                </header>
+                <div class="row">
+                    <div class="col-6 col-12-medium">
+                        <section>
+                            <form method="post" action="#">
+                                <div class="row gtr-50">
+                                    <div class="col-6 col-12-small">
+                                        <input name="nombre" placeholder="Nombre" type="text" required />
+                                    </div>
+                                    <div class="col-6 col-12-small">
+                                        <input name="email" placeholder="Email" type="email" required />
+                                    </div>
+                                    <div class="col-12">
+                                        <textarea name="mensaje" placeholder="Mensaje" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="form-button-submit button icon solid fa-envelope">Enviar mensaje</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </section>
+                    </div>
+                    <div class="col-6 col-12-medium">
+                        <section>
+                            <p>Aquí puedes incluir cualquier información adicional importante, como promociones o detalles del negocio.</p>
+                            <div class="row">
+                                <div class="col-6 col-12-small">
+                                    <ul class="icons">
+                                        <li class="icon solid fa-home">
+                                            CALLE<br />
+                                            PROVINCIA<br />
+                                            ARG
+                                        </li>
+                                        <li class="icon solid fa-phone">
+                                            NUMERO
+                                        </li>
+                                        <li class="icon solid fa-envelope">
+                                            <a href="#">EMAIL</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="col-6 col-12-small">
+                                    <ul class="icons">
+                                        <li class="icon brands fa-twitter">
+                                            <a href="#">TWITTER</a>
+                                        </li>
+                                        <li class="icon brands fa-instagram">
+                                            <a href="#">INSTAGRAM</a>
+                                        </li>
+                                        <li class="icon brands fa-facebook-f">
+                                            <a href="#">FACEBOOK</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+            <div id="copyright" class="container">
+                <ul class="links">
+                    <li>&copy; 2024 Such Great Food. Todos los derechos reservados</li>
                 </ul>
             </div>
-
-            <br>
-            <br>
-
-            <div class="card-productos">
-                <button class="agregar-al-carrito">➕</button>
-                <img src="https://th.bing.com/th/id/OIP.k0l8v15J1C9SWvmyDZCYWgAAAA?w=141&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" width="150px" height="150px" alt="Nombre del producto">
-                <p>PRECIO DEL PRODUCTO: $</p>
-                <p>NOMBRE DEL PRODUCTO:</p>
-                <p>DETALLES DEL PRODUCTO: </p>
-                <p>INGREDIENTES DEL PRODUCTO: </p>
-                <ul>
-                    <li>INGREDIENTE N°1</li>
-                    <li>INGREDIENTE N°2</li>
-                    <li>INGREDIENTE N°3</li>
-                </ul>
-            </div>
-
-            <div class="card-productos">
-                <button class="agregar-al-carrito">➕</button>
-                <img src="https://th.bing.com/th/id/OIP.k0l8v15J1C9SWvmyDZCYWgAAAA?w=141&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" width="150px" height="150px" alt="Nombre del producto">
-                <p>PRECIO DEL PRODUCTO: $</p>
-                <p>NOMBRE DEL PRODUCTO:</p>
-                <p>DETALLES DEL PRODUCTO: </p>
-                <p>INGREDIENTES DEL PRODUCTO: </p>
-                <ul>
-                    <li>INGREDIENTE N°1</li>
-                    <li>INGREDIENTE N°2</li>
-                    <li>INGREDIENTE N°3</li>
-                </ul>
-            </div>
-
-            <div class="card-productos">
-                <button class="agregar-al-carrito">➕</button>
-                <img src="https://th.bing.com/th/id/OIP.k0l8v15J1C9SWvmyDZCYWgAAAA?w=141&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" width="150px" height="150px" alt="Nombre del producto">
-                <p>PRECIO DEL PRODUCTO: $</p>
-                <p>NOMBRE DEL PRODUCTO:</p>
-                <p>DETALLES DEL PRODUCTO: </p>
-                <p>INGREDIENTES DEL PRODUCTO: </p>
-                <ul>
-                    <li>INGREDIENTE N°1</li>
-                    <li>INGREDIENTE N°2</li>
-                    <li>INGREDIENTE N°3</li>
-                </ul>
-            </div>
-
-        </div>
+        </section>
     </div>
-
-
-
-    <footer style="text-align: center;">
-        <p>&copy; 2024 Such Great Food. Todos los derechos reservados.</p>
-    </footer>
-    
 </body>
 </html>
