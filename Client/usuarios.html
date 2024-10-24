@@ -1,4 +1,3 @@
-<!---ARCHIVO usuarios-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,66 +9,38 @@
 <body>
 
     <header>
-        <h1>Bienvenidos a " Such Great Food "</h1>
-        <p>" ECOMMERCE de COMIDA y BEBIDAS "</p>
-        <img  class="logo" src="https://th.bing.com/th/id/OIG2.HdmZOAkDuP5oHg0YR_8v?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" >
+        <h1>Bienvenidos a "Such Great Food"</h1>
+        <p>"ECOMMERCE de COMIDA y BEBIDAS"</p>
+        <img class="logo" src="https://th.bing.com/th/id/OIG2.HdmZOAkDuP5oHg0YR_8v?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" alt="Logo">
     </header>
 
-    <navbar>
-        <img src="https://cdn-icons-png.flaticon.com/128/4655/4655563.png" width="40px" height="40px" alt="carrito de compras"></img>
-        <img src="https://cdn-icons-png.flaticon.com/128/4543/4543046.png" width="40px" height="40px" alt="configuracion"></img>
-        <button>Cerrar Sesión</button>
-    </navbar>
+    <nav>
+        <button onclick="renderMenu('lomos')">Lomos</button>
+        <button onclick="renderMenu('hamburguesas')">Hamburguesas</button>
+        <button onclick="renderMenu('pastas')">Pastas</button>
+        <button onclick="renderMenu('empanadas')">Empanadas</button>
+        <button onclick="renderMenu('bebidas')">Bebidas</button>
+        <button onclick="renderMenu('postres')">Postres</button>
+    </nav>
 
     <div class="productos">
         <h3>Lista de Productos</h3>
         <div class="card-lista-productos">
-
-            <div class="card-productos">
-                <img src="https://th.bing.com/th/id/OIP.R7fN46Xnw1muM9zGIsYp2QAAAA?w=147&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" width="150px" height="150px" alt="Nombre del producto">
-                <p>PRECIO DEL PRODUCTO: $</p>
-                <p>NOMBRE DEL PRODUCTO:</p>
-                <p>DETALLES DEL PRODUCTO: </p>
-                <p>INGREDIENTES DEL PRODUCTO: </p>
-                <ul>
-                    <li>INGREDIENTE N°1</li>
-                    <li>INGREDIENTE N°2</li>
-                    <li>INGREDIENTE N°3</li>
-                </ul>
-            </div>
-
-            <br>
-            <br>
-
-            <div class="card-productos">
-                <img src="https://th.bing.com/th/id/OIP.k0l8v15J1C9SWvmyDZCYWgAAAA?w=141&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" width="150px" height="150px" alt="Nombre del producto">
-                <p>PRECIO DEL PRODUCTO: $</p>
-                <p>NOMBRE DEL PRODUCTO:</p>
-                <p>DETALLES DEL PRODUCTO: </p>
-                <p>INGREDIENTES DEL PRODUCTO: </p>
-                <ul>
-                    <li>INGREDIENTE N°1</li>
-                    <li>INGREDIENTE N°2</li>
-                    <li>INGREDIENTE N°3</li>
-                </ul>
-            </div>
-
+            <!-- Aquí se insertarán los productos de forma dinámica -->
         </div>
     </div>
 
     <button id="logout">Cerrar Sesión</button>
 
-
     <footer>
         <p>&copy; 2024 Such Great Food. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- Scripts -->
     <script src="./js/authentication.js"></script>
-    <script>
-        document.getElementById('logout').addEventListener('click', () => {
-        sessionStorage.removeItem('token'); // Elimina el token
-        window.location.href = './index.html'; // Redirige a la página de inicio de sesión
-    });
-    </script>
-    </script>
+    <script src="./js/tokenUsuario.js"></script>
+    <script src="./js/products.js"></script>
+    <script src="./js/usuarioProductos.js"></script>
+
 </body>
 </html>
