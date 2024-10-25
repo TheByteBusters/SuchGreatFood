@@ -5,7 +5,7 @@ import path from "path";
 import { fileURLToPath } from 'url'; // Para resolver correctamente las rutas en ES6
 import { registerUser } from "./controllers/registerController.js";
 import { loginUser } from "./controllers/loginController.js";
-import { getProducts } from "./controllers/productController.js";
+import { getProducts, getProductById, createProduct, updateProduct, deleteProduct } from "./controllers/productController.js";
 import { verifyToken } from "./authMiddleware.js";
 import dotenv from "dotenv";
 
@@ -48,8 +48,16 @@ app.post('/register', registerUser);
 // Ruta para manejar el inicio de sesión
 app.post('/login', loginUser);
 
-// Manejar productos en la API
-app.get('/products', getProducts); // Si tienes productos
+// Rutas para manejar productos en la API
+app.get('/products', getProducts); // Listar productos
+
+app.get('/products/:id', getProductById); // Buscar por id
+
+app.post('/products', createProduct); // Crear producto
+
+app.put('/products/:id', updateProduct); // Modificar producto
+
+app.delete('/products/:id', deleteProduct); // Eliminar producto
 
 // Iniciar el servidor
 app.listen(port, () => {
