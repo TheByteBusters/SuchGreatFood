@@ -1,6 +1,7 @@
 import mysql from "mysql2/promise";
 import dotenv from "dotenv";
 
+
 // Cargar variables de entorno desde el archivo .env
 dotenv.config();
 
@@ -37,17 +38,19 @@ if (!process.env.DB_HOST || !process.env.DB_USER || !process.env.DB_PASSWORD || 
 
 // Configuración de la conexión a MySQL (usando un pool de conexiones)
 const pool = mysql.createPool({
-    //host: process.env.DB_HOST || '192.168.0.107', // ip
-    //user: process.env.DB_USER || 'Brian', // usuario de MySQL
-    //password: process.env.DB_PASSWORD || 'Brian12345', // contraseña de MySQL
-    //database: process.env.DB_NAME || 'basededatos1', // base de datos
-    host: "localhost",
-    user: "root",
-    password: "admin", // Acá van los datos de la Base de Datos
-    database: "usuarios",
+    host: process.env.DB_HOST || 'localhost', // ip
+    user: process.env.DB_USER || 'root', // usuario de MySQL
+    password: process.env.DB_PASSWORD || 'admin', // contraseña de MySQL
+    database: process.env.DB_NAME || 'usuarios', // base de datos
+    //host: "localhost",
+    //user: "root",
+    //password: "admin", // Acá van los datos de la Base de Datos
+    //database: "usuarios",
     waitForConnections: true,
     connectionLimit: 10, // número máximo de conexiones en el pool
-    queueLimit: 0
+    queueLimit: 0,
+    connectTimeout: 10000  // Aumenta el timeout si es necesario
+
 });
 
 // Probar la conexión a MySQL

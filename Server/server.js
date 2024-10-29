@@ -7,13 +7,55 @@ import { registerUser } from "./controllers/registerController.js";
 import { loginUser } from "./controllers/loginController.js";
 import { getProducts, getProductById, createProduct, updateProduct, deleteProduct } from "./controllers/productController.js";
 import { verifyToken } from "./authMiddleware.js";
+import pool from "./db/dbConnection.js";
 import dotenv from "dotenv";
 
 
 dotenv.config();
+async function crearTablaUsuariosSiNoExiste() {
+  const query = `
+      CREATE TABLE IF NOT EXISTS usuarios (
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          nombre_usuario VARCHAR(255) NOT NULL,
+          password VARCHAR(255) NOT NULL,
+          nombre VARCHAR(255) NOT NULL,
+          email VARCHAR(255) NOT NULL,
+          telefono INT NOT NULL
+      )
+  `;
+  try {
+      const [result] = await pool.query(query);
+      console.log('Tabla "usuarios" verificada/creada correctamente.');
+  } catch (err) {
+      console.error('Error al crear la tabla "usuarios":', err);
+  }
+}
+async function crearTablaProductosSiNoExiste() {
+  const query = `
+      CREATE TABLE IF NOT EXISTS productos (
+          id INT AUTO_INCREMENT PRIMARY KEY,
+          category VARCHAR(255) NOT NULL,
+          productName VARCHAR(255) NOT NULL,
+          price VARCHAR(255) NOT NULL,
+          details VARCHAR(255) NOT NULL,
+          ingredients VARCHAR(255) NOT NULL,
+          img VARCHAR(255)
+      )
+  `;
+  try {
+      const [result] = await pool.query(query);
+      console.log('Tabla "productos" verificada/creada correctamente.');
+  } catch (err) {
+      console.error('Error al crear la tabla "productos":', err);
+  }
+}
+
+// Llamar la función para crear la tabla
+crearTablaUsuariosSiNoExiste();
+crearTablaProductosSiNoExiste();
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.SERVERPORT || 8080;
 
 // Obtener el directorio actual en ES6
 const __filename = fileURLToPath(import.meta.url);

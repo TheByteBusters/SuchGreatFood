@@ -39,7 +39,7 @@ export const createProduct = async (req, res) => {
         return res.status(400).json({ error: 'El nombre y el precio son obligatorios' });
     }
 
-    const query = 'INSERT INTO productos (nombre_producto, precio_producto, detalles_producto) VALUES (?, ?, ?)';
+    const query = 'INSERT INTO productos (nombre_producto, precio_producto, detalles_producto, tipo) VALUES (?, ?, ?, ?)';
 
     try {
         const [result] = await db.query(query, [name, price, description]);
