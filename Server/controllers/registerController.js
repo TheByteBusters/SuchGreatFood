@@ -1,5 +1,5 @@
 import bcrypt from "bcryptjs";
-import db from "../db/dbConnection.js"; // Asegúrate de que esta ruta sea correcta
+import pool from "../db/dbConnection.js"; // Asegúrate de que esta ruta sea correcta
 
 export const registerUser = async (req, res) => {
   console.log("Datos recibidos:", req.body); // Ver datos recibidos
@@ -7,7 +7,7 @@ export const registerUser = async (req, res) => {
 
   try {
     // Verificar si el usuario ya existe por el nombre de usuario
-    const [existingUser] = await db.query(  // Cambiado aquí
+    const [existingUser] = await pool.query(  // Cambiado aquí
       "SELECT * FROM usuarios WHERE nombre_usuario = ?",
       [nombre_usuario]
     );
@@ -21,7 +21,7 @@ export const registerUser = async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // Insertar el nuevo usuario en la base de datos
-    const [result] = await db.query(  // Cambiado aquí
+    const [result] = await pool.query(  // Cambiado aquí
       "INSERT INTO usuarios (nombre_usuario, password, nombre, email, telefono) VALUES (?, ?, ?, ?, ?)",
       [nombre_usuario, hashedPassword, nombre, email, telefono]
     );
