@@ -21,7 +21,7 @@ export const loginUser = async (req, res) => {
         }
 
         // Generar un token JWT con tipo de usuario
-        const token = jwt.sign({ id: user[0].id, type: user[0].tipo_usuario }, JWT_SECRET, { expiresIn: "60s" });
+        const token = jwt.sign({ id: user[0].id, type: user[0].tipo_usuario }, JWT_SECRET, { expiresIn: "1h" });
 
         res.json({ message: "Inicio de sesión exitoso", token });
     } catch (error) {
