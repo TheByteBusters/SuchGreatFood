@@ -1,3 +1,4 @@
+<!--ARCHIVO usuarioLocal.html-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +18,7 @@
 
     <div>
         <button>Agregar Producto</button>     
-        <button>Cerrar Sesión</button>          
+        <button id="logout">Cerrar Sesión</button>          
     </div>
 
     <div class="productos-local">
@@ -53,7 +54,13 @@
         <p>&copy; 2024 Such Great Food. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="../Server/index.js"></script>
+    <script src="./js/authentication.js"></script>
+    <script>
+        document.getElementById('logout').addEventListener('click', () => {
+        sessionStorage.removeItem('token'); // Elimina el token
+        window.location.href = './index.html'; // Redirige a la página de inicio de sesión
+    });
+    </script>
 </body>
 
 </html>

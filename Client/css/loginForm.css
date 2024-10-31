@@ -1,0 +1,95 @@
+body{
+    box-sizing: border-box;
+    font-family: Montserrat;
+    background-image: url(../imagenes/fondo.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+section{
+    width: 100%;
+    height: 600px;
+    display: flex;
+}
+
+.contenedor-form{
+    width: 360px;
+    height: 410px;
+    margin: auto;
+    background-color: aliceblue;
+    border-radius: 15px;
+}
+
+
+.caja-p__form{
+    width: 100%;
+    height: 100px;
+    display: flex;
+}
+
+.caja-p__form p{
+    margin: auto;
+    font-size: 35px;
+    color: rgb(182, 74, 24);
+    font-weight: 500;
+}
+
+.contenedor-login{
+    width: 100%;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.contenedor-login input{
+    margin: 10px 15px;
+    padding: 8px 10px;
+    font-size: 15px;
+    font-family: Montserrat;
+    border: 2px solid rgb(221, 82, 1);
+    border-radius: 4px;
+    background-color: transparent;
+    outline: none;
+}
+
+
+.contenedor-button{
+    width: 100%;
+    height: 70px;
+    display: flex;
+}
+.contenedor-button button{
+    margin: auto;
+    padding: 11px 130px;
+    font-size: 17px;
+    font-weight: 400;
+    font-family: Montserrat;
+    border-radius: 50px;
+    background-color: rgb(221, 82, 1);
+    border: none;
+    color: white;
+    text-shadow: 0 0 1px white;
+    transition: all 300ms;
+}
+
+.contenedor-button button:hover{
+    background-color: rgb(187, 71, 4);
+}
+
+
+.contenedor-p__login{
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.contenedor-p__login p{
+    margin: 0;
+    font-size: 17px;
+}
+.contenedor-p__login a{
+    color: rgb(182, 74, 24);
+    text-decoration: none;
+}
