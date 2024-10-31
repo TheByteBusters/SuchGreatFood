@@ -1666,6 +1666,9 @@ input, select, textarea {
 		-ms-transition: background-color 0.25s ease-in-out;
 		transition: background-color 0.25s ease-in-out;
 		-webkit-appearance: none;
+		-moz-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
 		display: block;
 		border: 0;
 		background: #e8e8e8;
@@ -1761,6 +1764,9 @@ input, select, textarea {
 		-ms-transition: all 0.25s ease-in-out;
 		transition: all 0.25s ease-in-out;
 		-webkit-appearance: none;
+		-moz-appearance: none;
+		-ms-appearance: none;
+		appearance: none;
 		position: relative;
 		display: inline-block;
 		background: #ed786a;
