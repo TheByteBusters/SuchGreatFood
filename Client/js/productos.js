@@ -22,12 +22,14 @@ function displayProducts(products) {
 
     products.forEach(product => {
         const productCard = document.createElement('div');
-        productCard.className = 'product-card'; // Puedes aplicar estilos aquí
+        productCard.className = 'product-card';
         productCard.innerHTML = `
-            <h4>${product.productName}</h4>
-            <p>Precio: $${product.price}</p>
-            <p>Ingredientes: ${product.ingredients}</p>
             <img src="${product.img}" alt="${product.productName}" />
+            <div class="product-info">
+                <h4>${product.productName}</h4>
+                <p class="price">$${product.price}</p>
+                <p class="ingredients">Ingredientes: ${product.ingredients}</p>
+            </div>
         `;
         container.appendChild(productCard);
     });
@@ -35,8 +37,12 @@ function displayProducts(products) {
 
 // Función para filtrar productos según la categoría seleccionada
 function renderMenu(category) {
-    const filteredProducts = allProducts.filter(product => product.category === category);
-    displayProducts(filteredProducts);
+    if (category === 'todos') {
+        displayProducts(allProducts); // Muestra todos los productos
+    } else {
+        const filteredProducts = allProducts.filter(product => product.category === category);
+        displayProducts(filteredProducts);
+    }
 }
 
 // Llamar a la función al cargar la página
