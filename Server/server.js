@@ -5,13 +5,12 @@ import path from "path";
 import { fileURLToPath } from 'url'; // Para resolver correctamente las rutas en ES6
 import { registerUser } from "./controllers/registerController.js";
 import { loginUser } from "./controllers/loginController.js";
+import { cartController } from "./controllers/cartController.js";
 import { getProducts, getProductById, createProduct, updateProduct, deleteProduct } from "./controllers/productController.js";
 import { verifyToken } from "./authMiddleware.js";
 import pool from "./db/dbConnection.js";
-import dotenv from "dotenv";
+import { config } from "./config.js";
 
-
-dotenv.config();
 async function crearTablaUsuariosSiNoExiste() {
   const query = `
       CREATE TABLE IF NOT EXISTS usuarios (
@@ -55,7 +54,7 @@ crearTablaUsuariosSiNoExiste();
 crearTablaProductosSiNoExiste();
 
 const app = express();
-const port = process.env.SERVERPORT || 8080;
+const port = config.host || 8080;
 
 // Obtener el directorio actual en ES6
 const __filename = fileURLToPath(import.meta.url);
@@ -99,6 +98,8 @@ app.post('/products', createProduct); // Crear producto
 app.put('/products/:id', verifyToken, updateProduct); // Modificar producto
 
 app.delete('/products/:id', verifyToken, deleteProduct); // Eliminar producto
+
+app.post('/create_preference', cartController); // Ruta preferencia de pago
 
 // Iniciar el servidor
 app.listen(port, () => {

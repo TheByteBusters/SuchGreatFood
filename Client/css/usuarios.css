@@ -65,6 +65,229 @@ input, select, textarea {
 	-ms-appearance: none;
 	appearance: none;
 }
+/* Modal */
+.cart-btn {
+	z-index: 12000;
+    position: fixed;
+    top: 85vh;
+    right: 40px;
+    background-color: orange;
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    transition: transform 0.2s ease-in-out, background-color 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.cart-btn:hover {
+    background-color: yellow;
+    transform: scale(1.1);
+}
+
+.cart-counter {
+    display: none;
+    position: fixed;
+    top: 87vh;
+    right: 33px;
+    color: #fff;
+    text-align: center;
+    background-color: whitesmoke;
+    padding: 4px;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    font-size: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+
+	z-index: 13000;
+}
+
+/* Modal */
+.modal-overlay {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+	height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1001;
+}
+
+.modal-container {
+    display: none;
+    background-color: white;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    padding: 40px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 500px;
+    width: 100%;
+    z-index: 1002;
+    max-height: 80vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    animation: modal-fade-in 0.5s ease-out;
+}
+
+@keyframes modal-fade-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.modal-close {
+    cursor: pointer;
+    float: right;
+    color: black;
+    font-size: 20px;
+}
+
+.modal-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+    color: orange;
+	z-index: 13004;
+}
+
+/* Modal Body */
+.modal-body {
+    margin-bottom: 20px;
+    text-align: center;
+}
+.product {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.product-img {
+    height: 80px;
+    width: 80px;
+    object-fit: cover;
+    margin-right: 20px;
+}
+
+.product-info {
+    flex: 1;
+    text-align: left;
+}
+
+.product-info h4 {
+    margin-top: 0;
+    color: black;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-btn-decrese,
+.quantity-btn-increse {
+    color: yellow;
+    cursor: pointer;
+    font-size: 16px;
+    width: 28px;
+    font-weight: bold;
+}
+
+.quantity-input {
+    color: black;
+    font-size: 16px;
+    padding: 10px;
+    text-align: center;
+    width: 50px;
+    font-weight: bold;
+    margin: 0 10px;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    color: black;
+}
+
+.delete-product {
+    cursor: pointer;
+    color: #e74c3c;
+    margin-left: 20px;
+}
+
+.modal-footer {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.total-price {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 20px 0;
+    color: black;
+}
+
+.btn-primary {
+    background-color: orange;
+    border-color: whitesmoke;
+    color: black;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 30px;
+    text-transform: uppercase;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: red;
+    border-color: orange;
+}
+
+.card-products button:active {
+    background-color: yellow;
+    transform: scale(0.98);
+    transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+/* Retroalimentación al presionar el botón del carrito */
+.cart-btn:active {
+    background-color: yellow;
+    transform: scale(0.9);
+    transition: transform 0.1s ease, background-color 0.1s ease;
+}
+
+/* Retroalimentación al presionar el botón de checkout */
+.btn-primary:active {
+    background-color: yellow;
+    transform: scale(0.98);
+    transition: transform 0.1s ease, background-color 0.1s ease;
+}
 
 /* Basic */
 
@@ -195,6 +418,7 @@ input, select, textarea {
 	br.clear {
 		clear: both;
 	}
+	
 
 /* Container */
 
