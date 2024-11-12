@@ -99,7 +99,7 @@ const displayCart = async () => {
                     price: total,
                 };
 
-                const response = await fetch("/create_preference", {
+                const response = await fetch("http://localhost:8080/create_preference", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
