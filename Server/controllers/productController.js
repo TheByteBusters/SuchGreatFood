@@ -33,16 +33,16 @@ export const getProductById = async (req, res) => {
 
 // Crear un nuevo producto
 export const createProduct = async (req, res) => {
-    const { name, price, description } = req.body;
+    const { category, productName, price, details, ingredients, img  } = req.body;
 
-    if (!name || !price) {
+    if (!category || !productName || !price) {
         return res.status(400).json({ error: 'El nombre y el precio son obligatorios' });
     }
 
-    const query = 'INSERT INTO productos (nombre_producto, precio_producto, detalles_producto, tipo) VALUES (?, ?, ?, ?)';
+    const query = 'INSERT INTO productos (category, productName, price, details, ingredients, img) VALUES (?, ?, ?, ?, ?, ?)';
 
     try {
-        const [result] = await db.query(query, [name, price, description]);
+        const [result] = await db.query(query, [category, productName, price, details, ingredients, img]);
         res.status(201).json({ message: 'Producto creado con éxito', productId: result.insertId });
     } catch (err) {
         console.error(err);
@@ -53,16 +53,16 @@ export const createProduct = async (req, res) => {
 // Actualizar un producto existente
 export const updateProduct = async (req, res) => {
     const { id } = req.params;
-    const { name, price, description } = req.body;
+    const { category, productName, price, details, ingredients, img } = req.body;
 
-    if (!name || !price) {
+    if (!productName || !price) {
         return res.status(400).json({ error: 'El nombre y el precio son obligatorios' });
     }
 
-    const query = 'UPDATE productos SET nombre_producto = ?, precio_producto = ?, detalles_producto = ? WHERE id = ?';
+    const query = 'UPDATE productos SET category = ?, productName = ?, price = ?, details = ?, ingredients = ?, img = ? WHERE id = ?';
 
     try {
-        const [result] = await db.query(query, [name, price, description, id]);
+        const [result] = await db.query(query, [category, productName, price, details, ingredients, img, id]);
         if (result.affectedRows === 0) {
             return res.status(404).json({ error: 'Producto no encontrado' });
         }

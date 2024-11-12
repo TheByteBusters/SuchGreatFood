@@ -15,7 +15,7 @@
                 <p>Iniciar Sesión</p>
             </div>
             <div class="contenedor-login">
-                <input type="text" id="nombre_usuario" placeholder="usuario">
+                <input type="text" id="nombre_usuario" placeholder="Usuario">
                 <input type="password" id="password" placeholder="Contraseña">
             </div>
             <div class="contenedor-button">
@@ -26,7 +26,7 @@
             </div>
         </form>
     </section>
-    <!---<script type="module" src="../Server/controllers/loginController.js"></script> <!-- Verifica que la ruta sea correcta -->
+    <script type="module" src="../Server/controllers/loginController.js"></script> <!-- Verifica que la ruta sea correcta -->
     <script>
         // Depuración para el manejo del formulario
         document.getElementById('contenedor-form').addEventListener('submit', async (e) => {
@@ -53,7 +53,7 @@
             console.log('Respuesta del servidor:', data); // Depuración
             
             if (response.ok) {
-                //document.getElementById('message').textContent = data.message;
+                document.getElementById('message').textContent = data.message;
                 sessionStorage.setItem('token', data.token); // Asegúrate de que el servidor envíe el token
                 window.location.href = './usuarios.html'; // Cambia a la URL del formulario de registro
 

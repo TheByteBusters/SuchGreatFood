@@ -83,7 +83,6 @@ app.get('/usuarioLocal.html', verifyToken, (req, res) => {
   res.sendFile(path.join(__dirname, '../Client/usuarioLocal.html'));
 });
 
-
 // Ruta para registrar un usuario
 app.post('/register', registerUser);
 
@@ -97,9 +96,9 @@ app.get('/products/:id', getProductById); // Buscar por id
 
 app.post('/products', createProduct); // Crear producto
 
-app.put('/products/:id', updateProduct); // Modificar producto
+app.put('/products/:id', verifyToken, updateProduct); // Modificar producto
 
-app.delete('/products/:id', deleteProduct); // Eliminar producto
+app.delete('/products/:id', verifyToken, deleteProduct); // Eliminar producto
 
 // Iniciar el servidor
 app.listen(port, () => {

@@ -13,7 +13,7 @@ async function login() {
     if (response.ok) {
         // Almacenar el token en sessionStorage
         sessionStorage.setItem('token', data.token);
-        window.location.href = './usuarios.html';
+        window.location.href = './usuarios.html'; // Corregido para una ruta relativa
     } else {
         alert(data.message); // Mostrar mensaje de error
     }
