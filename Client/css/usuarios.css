@@ -11,6 +11,8 @@ body {
 
 /* Estilos para el header */
 header {
+	display: flex;
+	justify-content: center;
 	width: 100%;
 	height: 100px;
     background-color: #ff6b6b;
@@ -27,8 +29,6 @@ header p {
 }
 
 header .logo {
-	display: flex;
-	flex-wrap: wrap-reverse;
     width: 100px;
     margin-top: 10px;
     border-radius: 50%;
@@ -59,6 +59,8 @@ div > button:hover {
 }
 
 .productos-local h3 {
+	display: flex;
+	justify-content: center;
     color: #444;
     margin-bottom: 20px;
     font-size: 20px;
@@ -112,6 +114,8 @@ div > button:hover {
 
 /* Footer */
 footer {
+	display: flex;
+	justify-content: center;
     padding: 15px 0;
     background-color: #333;
     color: white;
@@ -119,4 +123,37 @@ footer {
     position: relative;
     bottom: 0;
     width: 100%;
+}
+
+
+/* tabla*/
+.tabla-ingredientes {
+    display: flex;
+    justify-content: center; 
+    margin: 20px auto;
+}
+
+table {
+    width: 80%; /* Ajusta el ancho de la tabla */
+    border-collapse: collapse; /* Elimina los espacios entre celdas */
+    font-family: Arial, sans-serif;
+    text-align: center; /* Centra el texto en las celdas */
+}
+
+thead.encabezado-tabla {
+    background-color: #f8924d; /* Fondo del encabezado */
+    color: white; /* Color del texto del encabezado */
+}
+
+th, td {
+    padding: 12px; /* Espacio interno de cada celda */
+    border: 1px solid #ddd; /* Bordes en cada celda */
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f2f2f2; /* Color de fondo alternado en filas */
+}
+
+tbody tr:hover {
+    background-color: #ddd; /* Color de fondo al pasar el mouse */
 }
