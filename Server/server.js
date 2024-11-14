@@ -18,6 +18,26 @@ import { verifyToken } from "./authMiddleware.js";
 import pool from "./db/dbConnection.js";
 import { config } from "./config.js";
 
+async function crearTablaMensajesSiNoExiste() {
+  const query = `
+    CREATE TABLE IF NOT EXISTS mensajes (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(50) NOT NULL,
+      email VARCHAR(50) NOT NULL,
+      message VARCHAR(255),
+      user_id INT,
+      FOREIGN KEY (user_id) REFERENCES usuarios(id) ON DELETE CASCADE
+    )
+  `;
+  try {
+    const [result] = await pool.query(query);
+    console.log('Tabla "mensajes" verificada/creada correctamente.');
+  } catch (err) {
+    console.error('Error al crear la tabla "mensajes":', err);
+  }
+}
+
+
 async function crearTablaUsuariosSiNoExiste() {
   const query = `
       CREATE TABLE IF NOT EXISTS usuarios (
@@ -57,6 +77,7 @@ async function crearTablaProductosSiNoExiste() {
 }
 
 // Llamar la función para crear la tabla
+crearTablaMensajesSiNoExiste();
 crearTablaUsuariosSiNoExiste();
 crearTablaProductosSiNoExiste();
 
