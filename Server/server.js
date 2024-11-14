@@ -2,12 +2,18 @@
 import express from "express";
 import cors from "cors";
 import path from "path";
-import { fileURLToPath } from 'url'; // Para resolver correctamente las rutas en ES6
+import { fileURLToPath } from "url"; // Para resolver correctamente las rutas en ES6
 import { registerUser } from "./controllers/registerController.js";
 import { loginUser } from "./controllers/loginController.js";
 import { cartController } from "./controllers/cartController.js";
 import { message } from "./controllers/messageController.js";
-import { getProducts, getProductById, createProduct, updateProduct, deleteProduct } from "./controllers/productController.js";
+import {
+  getProducts,
+  getProductById,
+  createProduct,
+  updateProduct,
+  deleteProduct,
+} from "./controllers/productController.js";
 import { verifyToken } from "./authMiddleware.js";
 import pool from "./db/dbConnection.js";
 import { config } from "./config.js";
@@ -24,10 +30,10 @@ async function crearTablaUsuariosSiNoExiste() {
       )
   `;
   try {
-      const [result] = await pool.query(query);
-      console.log('Tabla "usuarios" verificada/creada correctamente.');
+    const [result] = await pool.query(query);
+    console.log('Tabla "usuarios" verificada/creada correctamente.');
   } catch (err) {
-      console.error('Error al crear la tabla "usuarios":', err);
+    console.error('Error al crear la tabla "usuarios":', err);
   }
 }
 async function crearTablaProductosSiNoExiste() {
@@ -43,13 +49,12 @@ async function crearTablaProductosSiNoExiste() {
       )
   `;
   try {
-      const [result] = await pool.query(query);
-      console.log('Tabla "productos" verificada/creada correctamente.');
+    const [result] = await pool.query(query);
+    console.log('Tabla "productos" verificada/creada correctamente.');
   } catch (err) {
-      console.error('Error al crear la tabla "productos":', err);
+    console.error('Error al crear la tabla "productos":', err);
   }
 }
-
 
 // Llamar la función para crear la tabla
 crearTablaUsuariosSiNoExiste();
@@ -68,42 +73,42 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Servir archivos estáticos desde la carpeta Client
-app.use(express.static(path.join(__dirname, '../Client')));
+app.use(express.static(path.join(__dirname, "../Client")));
 
 // Ruta para servir el formulario de login
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, '../Client/index.html'));
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Client/index.html"));
 });
 
-app.get('/usuarios.html', verifyToken, (req, res) => {
-  res.sendFile(path.join(__dirname, '../Client/usuarios.html'));
+app.get("/usuarios.html", (req, res) => {
+  res.sendFile(path.join(__dirname, "../Client/usuarios.html"));
 });
 
 // Ruta para acceder a usuarioLocal (requiere autenticación)
-app.get('/usuarioLocal.html', verifyToken, (req, res) => {
-  res.sendFile(path.join(__dirname, '../Client/usuarioLocal.html'));
+app.get("/usuarioLocal.html", verifyToken, (req, res) => {
+  res.sendFile(path.join(__dirname, "../Client/usuarioLocal.html"));
 });
 
 // Ruta para registrar un usuario
-app.post('/register', registerUser);
+app.post("/register", registerUser);
 
 // Ruta para manejar el inicio de sesión
-app.post('/login', loginUser);
+app.post("/login", loginUser);
 
 // Rutas para manejar productos en la API
-app.get('/products', getProducts); // Listar productos
+app.get("/products", getProducts); // Listar productos
 
-app.get('/products/:id', getProductById); // Buscar por id
+app.get("/products/:id", getProductById); // Buscar por id
 
-app.post('/products', createProduct); // Crear producto
+app.post("/products", createProduct); // Crear producto
 
-app.put('/products/:id', verifyToken, updateProduct); // Modificar producto
+app.put("/products/:id", verifyToken, updateProduct); // Modificar producto
 
-app.delete('/products/:id', verifyToken, deleteProduct); // Eliminar producto
+app.delete("/products/:id", verifyToken, deleteProduct); // Eliminar producto
 
-app.post('/create_preference', cartController); // Ruta preferencia de pago
+app.post("/create_preference", cartController); // Ruta preferencia de pago
 
-app.post('/message', message); // Prefijo para las rutas de la API
+app.post("/message", message); // Prefijo para las rutas de la API
 
 // Iniciar el servidor
 app.listen(port, () => {
