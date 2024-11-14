@@ -37,7 +37,6 @@ async function crearTablaMensajesSiNoExiste() {
   }
 }
 
-
 async function crearTablaUsuariosSiNoExiste() {
   const query = `
       CREATE TABLE IF NOT EXISTS usuarios (
@@ -46,7 +45,8 @@ async function crearTablaUsuariosSiNoExiste() {
           password VARCHAR(255) NOT NULL,
           nombre VARCHAR(255) NOT NULL,
           email VARCHAR(255) NOT NULL,
-          telefono INT NOT NULL
+          telefono INT NOT NULL,
+          rol VARCHAR(50)
       )
   `;
   try {

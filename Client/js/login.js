@@ -27,19 +27,20 @@ document
 
     // Manejo de la respuesta del servidor
     if (response.ok) {
-      // Guarda el token y userId en localStorage
+      // Guarda el token y userId en localStorage y sessionStorage
       localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.userId); // Guarda el ID del usuario
+      localStorage.setItem("userId", data.userId);
       sessionStorage.setItem("token", data.token);
       sessionStorage.setItem("userId", data.userId);
-      // Redirección según el tipo de usuario
-      if (nombre_usuario === "hernan" && password === "1234") {
-        window.location.href = "./usuarioLocal.html"; // Redirige para el usuario local
+
+      // Redirección según el rol del usuario
+      if (data.rol === "admin") {
+        window.location.href = "./usuarioLocal.html"; // Redirige para administrador
       } else {
         window.location.href = "./usuarios.html"; // Redirige para usuarios generales
       }
     } else {
       // Muestra el mensaje de error devuelto por el servidor
-      alert("usuario o contraseña incorrecta...");
+      alert("Usuario o contraseña incorrecta...");
     }
   });
