@@ -1,7 +1,6 @@
-// ARCHIVO loginController.js
-import bcrypt from "bcryptjs"; // Encripta contraseñas
-import jwt from "jsonwebtoken"; // Impide que puedan ingresar directamente sin haber pasado por el login
-import db from "../db/dbConnection.js"; // Conexión de base de datos
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import db from "../db/dbConnection.js";
 
 const JWT_SECRET = "logueate_campeon";
 
@@ -23,9 +22,9 @@ export const loginUser = async (req, res) => {
         // Generar un token JWT con tipo de usuario
         const token = jwt.sign({ id: user[0].id, type: user[0].tipo_usuario }, JWT_SECRET, { expiresIn: "1h" });
 
-        res.json({ message: "Inicio de sesión exitoso", token });
+        // Enviar también el userId en la respuesta
+        res.json({ message: "Inicio de sesión exitoso", token, userId: user[0].id });
     } catch (error) {
         res.status(500).json({ message: "Error al iniciar sesión" });
     }
 };
-

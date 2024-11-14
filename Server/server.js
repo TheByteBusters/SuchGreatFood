@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url'; // Para resolver correctamente las rutas en
 import { registerUser } from "./controllers/registerController.js";
 import { loginUser } from "./controllers/loginController.js";
 import { cartController } from "./controllers/cartController.js";
+import { message } from "./controllers/messageController.js";
 import { getProducts, getProductById, createProduct, updateProduct, deleteProduct } from "./controllers/productController.js";
 import { verifyToken } from "./authMiddleware.js";
 import pool from "./db/dbConnection.js";
@@ -48,6 +49,7 @@ async function crearTablaProductosSiNoExiste() {
       console.error('Error al crear la tabla "productos":', err);
   }
 }
+
 
 // Llamar la función para crear la tabla
 crearTablaUsuariosSiNoExiste();
@@ -100,6 +102,8 @@ app.put('/products/:id', verifyToken, updateProduct); // Modificar producto
 app.delete('/products/:id', verifyToken, deleteProduct); // Eliminar producto
 
 app.post('/create_preference', cartController); // Ruta preferencia de pago
+
+app.post('/message', message); // Prefijo para las rutas de la API
 
 // Iniciar el servidor
 app.listen(port, () => {
