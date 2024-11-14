@@ -15,3 +15,8 @@ export const config = {
   mpToken: process.env.MP_TOKEN,
 };
 
+export const config3 = {
+  JWT_SECRET: "tu_mensaje_jwt",
+  ID_RECEPTOR_ESPECIAL: 1 // ID del usuario especial que recibe los mensajes
+  // Otros valores de configuración
+};

@@ -5,11 +5,34 @@ import path from "path";
 import { fileURLToPath } from 'url'; // Para resolver correctamente las rutas en ES6
 import { registerUser } from "./controllers/registerController.js";
 import { loginUser } from "./controllers/loginController.js";
+import { message } from "./controllers/messageController.js";
 import { cartController } from "./controllers/cartController.js";
 import { getProducts, getProductById, createProduct, updateProduct, deleteProduct } from "./controllers/productController.js";
 import { verifyToken } from "./authMiddleware.js";
 import pool from "./db/dbConnection.js";
 import { config } from "./config.js";
+import { config3 } from "./config.js";
+
+
+async function crearTablaMensajesSiNoExiste() {
+  const query = `
+    CREATE TABLE IF NOT EXISTS mensajes (
+      id INT AUTO_INCREMENT PRIMARY KEY,
+      name VARCHAR(50) NOT NULL,
+      email VARCHAR(50) NOT NULL,
+      message VARCHAR(255),
+      userId INT,
+      FOREIGN KEY (userId) REFERENCES usuarios(id) ON DELETE CASCADE
+    )
+  `;
+  try {
+    const [result] = await pool.query(query);
+    console.log('Tabla "mensajes" verificada/creada correctamente.');
+  } catch (err) {
+    console.error('Error al crear la tabla "mensajes":', err);
+  }
+}
+
 
 async function crearTablaUsuariosSiNoExiste() {
   const query = `
@@ -19,7 +42,7 @@ async function crearTablaUsuariosSiNoExiste() {
           password VARCHAR(255) NOT NULL,
           nombre VARCHAR(255) NOT NULL,
           email VARCHAR(255) NOT NULL,
-          telefono INT NOT NULL
+          telefono INT NOT NULL 
       )
   `;
   try {
@@ -50,11 +73,30 @@ async function crearTablaProductosSiNoExiste() {
 }
 
 // Llamar la función para crear la tabla
+crearTablaMensajesSiNoExiste();
 crearTablaUsuariosSiNoExiste();
 crearTablaProductosSiNoExiste();
 
+
+export const createMessage = async (req, res) => {
+  try {
+    const { mensaje } = req.body;
+    const id_usuario = req.user.id; // El usuario que envía el mensaje
+    const id_receptor = config3.ID_RECEPTOR_ESPECIAL; // ID del usuario receptor especial
+
+    const query = `INSERT INTO mensajes (mensaje, id_usuario, id_receptor) VALUES (?, ?, ?)`;
+    const [result] = await pool.query(query, [mensaje, id_usuario, id_receptor]);
+
+    res.status(201).json({ message: "Mensaje creado", id: result.insertId });
+  } catch (error) {
+    res.status(500).json({ error: "Error al crear el mensaje" });
+  }
+};
+
+
+
 const app = express();
-const port = config.host || 8080;
+const port = config.host || 5000;
 
 // Obtener el directorio actual en ES6
 const __filename = fileURLToPath(import.meta.url);
@@ -100,6 +142,8 @@ app.put('/products/:id', verifyToken, updateProduct); // Modificar producto
 app.delete('/products/:id', verifyToken, deleteProduct); // Eliminar producto
 
 app.post('/create_preference', cartController); // Ruta preferencia de pago
+
+app.post('/message', message); // Prefijo para las rutas de la API
 
 // Iniciar el servidor
 app.listen(port, () => {
