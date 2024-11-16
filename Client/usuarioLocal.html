@@ -5,87 +5,93 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APP PROYECTO ECOMMERCE</title>
-    <link rel="stylesheet" href="css/usuarios.css">
+    <link rel="stylesheet" href="css/usuarioLocal.css">
     <link rel="stylesheet" href="js/usuario_local.js">
 </head>
-<body>
-
-    <header>
-        <h1>Bienvenidos a " Such Great Food "</h1>
-        <p>" ECOMMERCE de COMIDA y BEBIDAS "</p>
-        <img  class="logo" src="https://th.bing.com/th/id/OIG2.HdmZOAkDuP5oHg0YR_8v?w=270&h=270&c=6&r=0&o=5&dpr=1.3&pid=ImgGn" >
-    </header>
-
-    <div>
-        <!-- Llama a la función de agregarProducto al hacer clic -->
-        <button onclick="agregarIngredientes()">Agregar Ingredientes</button>
-        <button id="agregarProducto">Agregar Producto</button>       
-        <button id="logout">Cerrar Sesión</button>          
-    </div>
-
-    <div class="productos-local">
-        <h3>Lista de Productos Agregados</h3>
-        <div class="card-lista-productos-local">
-        
-                    <div class="tabla-ingredientes">
-                        <table>
-                            <thead class="encabezado-tabla">
-                                <tr>
-                                    <th>Ingredientes</th>
-                                    <th>Precio</th>
-                                    <th>Stock</th>
-                                    <th>Extra</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>tomate</td>
-                                    <td>48</td>
-                                    <td>4</td>
-                                    <td>Extra info</td>
-                                </tr>
-                                <tr>
-                                    <td>tomate</td>
-                                    <td>48</td>
-                                    <td>4</td>
-                                    <td>Extra info</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-        
-                </div>
-            </div>
-
-            <div class="card-productos">
-                <button>❌ Eliminar Producto</button>
-                <button>✏️ Editar Producto</button>
+<body class="homepage is-preload">
+    <div id="page-wrapper">
+        <!-- Header -->
+        <section id="header">
+            <div class="container">
+                <!-- Logo -->
+                <h1 id="logo">Such Great Food</h1>
+                <p>ECOMMERCE de COMIDA y BEBIDAS</p>
+                <img class="logo" src="/imagenes/logo.jpg" alt="Logo">
                 <br>
-                <img src="https://th.bing.com/th/id/OIP.R7fN46Xnw1muM9zGIsYp2QAAAA?w=147&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" width="150px" height="150px" alt="Nombre del producto">
-                <p>PRECIO DEL PRODUCTO: $</p>
-                <p>NOMBRE DEL PRODUCTO:</p>
-                <p>DETALLES DEL PRODUCTO: </p>
-                <p>INGREDIENTES DEL PRODUCTO: </p>
+                
+                <button id="logout" onclick="cerrarSesion()">Cerrar Sesión</button>          
             </div>
 
-            <div class="card-productos">
-                <button>❌ Eliminar Producto</button>
-                <button>✏️ Editar Producto</button>
-                <br>
-                <img src="https://th.bing.com/th/id/OIP.k0l8v15J1C9SWvmyDZCYWgAAAA?w=141&h=150&c=7&r=0&o=5&dpr=1.3&pid=1.7" width="150px" height="150px" alt="Nombre del producto">
-                <p>PRECIO DEL PRODUCTO: $</p>
-                <p>NOMBRE DEL PRODUCTO:</p>
-                <p>DETALLES DEL PRODUCTO: </p>
-                <p>INGREDIENTES DEL PRODUCTO: </p>
-            </div>
+    <div class="ingredientes-local">
+        <h3>Lista de Ingredientes en Stock</h3>
+        <button onclick="mostrarFormularioIngrediente()">➕ Agregar Ingrediente</button>
+        
+        <div id="formularioIngrediente" style="display: none;">
+            <h4>Agregar Nuevo Ingrediente</h4>
+            <p>Nombre: <input type="text" id="nombreIngrediente" /></p>
+            <p>Cantidad: <input type="number" id="cantidadIngrediente" /></p>
+            <p>Precio: <input type="number" id="precioIngrediente" /></p>
+            <button onclick="agregarIngrediente()">Agregar</button>
+            <button onclick="ocultarFormularioIngrediente()">Cancelar</button>
+        </div>
 
+        <div class="card-lista-ingredientes-local">
+            <table>
+                <thead class="encabezado-tabla">
+                    <tr>
+                        <th>Ingrediente</th>
+                        <th>Cantidad</th>
+                        <th>Precio</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="ingredientes">
+                    <!-- Ingredientes se agregarán aquí -->
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Such Great Food. Todos los derechos reservados.</p>
-    </footer>
+    <div class="productos-local">
+        <h3>Lista de Productos</h3>
+        <button onclick="mostrarFormularioProducto()">➕ Agregar Producto</button>
+        
+        <div id="formularioProducto" style="display: none;">
+            <h4>Agregar Nuevo Producto</h4>
+            <p>Nombre: <input type="text" id="nombreProducto" /></p>
+            <p>Ingredientes: <input type="text" id="ingredientesProducto" placeholder="Ej: tomate, lechuga" /></p>
+            <p>Precio: <input type="number" id="precioProducto" /></p>
+            <p>Cantidad: <input type="number" id="cantidadProducto" /></p>
+            <button onclick="agregarProducto()">Agregar</button>
+            <button onclick="ocultarFormularioProducto()">Cancelar</button>
+        </div>
 
+        <div class="card-lista-productos-local">
+            <table>
+                <thead class="encabezado-tabla">
+                    <tr>
+                        <th>Producto</th>
+                        <th>Ingredientes</th>
+                        <th>Precio</th>
+                        <th>Cantidad</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="productos">
+                    <!-- Productos se agregarán aquí -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+</div>
+<div id="copyright" class="container">
+    <ul class="links">
+        <li>&copy; 2024 Such Great Food. Todos los derechos reservados.</li>
+    </ul>
+</div>
+<script src="js/usuario_local.js" defer></script>
 </body>
 
 </html>
