@@ -4,6 +4,8 @@
     <title>Such Great Food</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+
     <link rel="stylesheet" href="./css/usuarios.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
@@ -51,6 +53,15 @@
                 </div>
             </div>
         </section>
+
+        <!-- Modal-->
+         <section>
+            <div class="cart-btn" id="cart-btn">🛒</div>
+            <span class="cart-counter" id="cart-counter">0</span>
+            <div class="modal-overlay" id="modal-overlay"></div>
+            <div class="modal-container" id="modal-container"></div>
+         </section>
+        
 
         <!-- Pie de pagina -->
         <section id="footer">
@@ -128,9 +139,11 @@
     </div>
 
     <!-- Scripts -->
+    <script src="./js/productos.js"></script>
+    <script src="./js/cart.js" defer></script>
     <script src="./js/authentication.js"></script>
     <script src="./js/tokenUsuario.js"></script>
-    <script src="./js/productos.js"></script>
     <script src="./js/menu.js"></script>
+    <script src="./js/usuarios.js"></script>
 </body>
 </html>

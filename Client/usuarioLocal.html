@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APP PROYECTO ECOMMERCE</title>
-    <link rel="stylesheet" href="./css/usuarios.css">
-
+    <link rel="stylesheet" href="css/usuarios.css">
+    <link rel="stylesheet" href="js/usuario_local.js">
 </head>
 <body>
 
@@ -17,13 +17,45 @@
     </header>
 
     <div>
-        <button>Agregar Producto</button>     
+        <!-- Llama a la función de agregarProducto al hacer clic -->
+        <button onclick="agregarIngredientes()">Agregar Ingredientes</button>
+        <button id="agregarProducto">Agregar Producto</button>       
         <button id="logout">Cerrar Sesión</button>          
     </div>
 
     <div class="productos-local">
         <h3>Lista de Productos Agregados</h3>
         <div class="card-lista-productos-local">
+        
+                    <div class="tabla-ingredientes">
+                        <table>
+                            <thead class="encabezado-tabla">
+                                <tr>
+                                    <th>Ingredientes</th>
+                                    <th>Precio</th>
+                                    <th>Stock</th>
+                                    <th>Extra</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>tomate</td>
+                                    <td>48</td>
+                                    <td>4</td>
+                                    <td>Extra info</td>
+                                </tr>
+                                <tr>
+                                    <td>tomate</td>
+                                    <td>48</td>
+                                    <td>4</td>
+                                    <td>Extra info</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+        
+                </div>
+            </div>
 
             <div class="card-productos">
                 <button>❌ Eliminar Producto</button>
@@ -54,13 +86,6 @@
         <p>&copy; 2024 Such Great Food. Todos los derechos reservados.</p>
     </footer>
 
-    <script src="./js/authentication.js"></script>
-    <script>
-        document.getElementById('logout').addEventListener('click', () => {
-        sessionStorage.removeItem('token'); // Elimina el token
-        window.location.href = './index.html'; // Redirige a la página de inicio de sesión
-    });
-    </script>
 </body>
 
 </html>

@@ -2,7 +2,7 @@
   "name": "server",
   "version": "1.0.0",
   "description": "Este es un proyecto de Ecommerce de un local de comida llamado Such Great Food. Permite a los usuarios ver los productos ofrecidos, agregarlos al carrito, pagarlos y pedir el envío a domicilio.",
-  "main": "index.js",
+  "main": "server.js",
   "type": "module",
   "dependencies": {
     "accepts": "^1.3.8",
@@ -75,7 +75,10 @@
     "vary": "^1.1.2"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "server.js",
+    "DEV": "nodemon Server/server.js"
+
   },
   "author": "",
   "license": "ISC"

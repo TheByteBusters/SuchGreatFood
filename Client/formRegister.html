@@ -131,23 +131,7 @@
 </body>
 </html>
 
-    <script>
-        // Evitar el comportamiento por defecto del formulario si quieres hacer un envío usando Fetch API
-        document.getElementById('registerForm').addEventListener('submit', async function(e) {
-          e.preventDefault();
-          
-          const formData = new FormData(this);
-          const data = Object.fromEntries(formData.entries());
-    
-          const response = await fetch('/register', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-          });
-    
-          const result = await response.json();
-          alert(result.message);  // Mostrar el mensaje de éxito o error
-        });
-      </script>
+    <script src="js/register.js"></script>
+
 </body>
 </html>
