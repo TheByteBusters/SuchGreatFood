@@ -1,149 +1,184 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
-<head>
+  <head>
+    <script src="./js/authentication.js"></script>
+    <script src="./js/tokenUsuario.js"></script>
     <title>Such Great Food</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
     <script src="https://sdk.mercadopago.com/js/v2"></script>
-
     <link rel="stylesheet" href="./css/usuarios.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-</head>
-<body class="homepage is-preload">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body class="homepage is-preload">
     <div id="page-wrapper">
-        <!-- Header -->
-        <section id="header">
-            <div class="container">
-                <!-- Logo -->
-                <h1 id="logo">Such Great Food</h1>
-                <p>ECOMMERCE de COMIDA y BEBIDAS</p>
-                <img class="logo" src="/imagenes/logo.jpg" alt="Logo">
-                <br>
-                
-                <!-- Nav -->
-                <nav id="nav">
-                    <div class="menu-toggle">
-                        <span></span>
-                        <span></span>
-                        <span></span>
+      <!-- Header -->
+      <section id="header">
+        <div class="container">
+          <!-- Logo -->
+          <h1 id="logo">Such Great Food</h1>
+          <p>ECOMMERCE de COMIDA y BEBIDAS</p>
+          <img class="logo" src="/imagenes/logo.jpg" alt="Logo" />
+          <br />
+
+          <!-- Nav -->
+          <nav id="nav">
+            <div class="menu-toggle">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <ul>
+              <li>
+                <a onclick="renderMenu('todos')"
+                  ><span>Lista de Productos</span></a
+                >
+              </li>
+              <li>
+                <a onclick="renderMenu('lomos')"><span>Lomos</span></a>
+              </li>
+              <li>
+                <a onclick="renderMenu('hamburguesas')"
+                  ><span>Hamburguesas</span></a
+                >
+              </li>
+              <li>
+                <a onclick="renderMenu('pastas')"><span>Pastas</span></a>
+              </li>
+              <li>
+                <a onclick="renderMenu('empanadas')"><span>Empanadas</span></a>
+              </li>
+              <li>
+                <a onclick="renderMenu('bebidas')"><span>Bebidas</span></a>
+              </li>
+              <li>
+                <a onclick="renderMenu('postres')"><span>Postres</span></a>
+              </li>
+              <li class="logout-item">
+                <button id="logout" class="button-logout">Cerrar sesión</button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+
+      <!-- Productos -->
+      <section id="features">
+        <div class="container">
+          <header>
+            <h2>Lista de Productos</h2>
+          </header>
+          <div class="row aln-center" id="productos-container">
+            <!-- Aquí se insertarán los productos de forma dinámica -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Modal-->
+      <section>
+        <div class="cart-btn" id="cart-btn">🛒</div>
+        <span class="cart-counter" id="cart-counter">0</span>
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-container" id="modal-container"></div>
+      </section>
+
+      <!-- Pie de pagina -->
+      <section id="footer">
+        <div class="container">
+          <header>
+            <h2>¿Preguntas o comentarios? <strong>Contáctanos:</strong></h2>
+          </header>
+          <div class="row">
+            <div class="col-6 col-12-medium">
+              <section>
+                <form method="post" action="#">
+                  <div class="row gtr-50">
+                    <div class="col-6 col-12-small">
+                      <input name="name" placeholder="Nombre" type="text" />
                     </div>
-                    <ul>
-                        <li><a onclick="renderMenu('todos')"><span>Lista de Productos</span></a></li>
-                        <li><a onclick="renderMenu('lomos')"><span>Lomos</span></a></li>
-                        <li><a onclick="renderMenu('hamburguesas')"><span>Hamburguesas</span></a></li>
-                        <li><a onclick="renderMenu('pastas')"><span>Pastas</span></a></li>
-                        <li><a onclick="renderMenu('empanadas')"><span>Empanadas</span></a></li>
-                        <li><a onclick="renderMenu('bebidas')"><span>Bebidas</span></a></li>
-                        <li><a onclick="renderMenu('postres')"><span>Postres</span></a></li>
-                        <li class="logout-item"><button id="logout" class="button-logout">Cerrar sesión</button></li>
-                    </ul>
-                </nav>
-
+                    <div class="col-6 col-12-small">
+                      <input name="email" placeholder="Email" type="text" />
+                    </div>
+                    <div class="col-12">
+                      <textarea name="message" placeholder="Mensaje"></textarea>
+                    </div>
+                    <div class="col-12">
+                      <button type="submit" class="form-button-submit">
+                        Enviar Mensaje
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </section>
             </div>
-        </section>
-
-        <!-- Productos -->
-        <section id="features">
-            <div class="container">
-                <header>
-                    <h2>Lista de Productos</h2>
-                </header>
-                <div class="row aln-center" id="productos-container">
-                    <!-- Aquí se insertarán los productos de forma dinámica -->
-                </div>
-            </div>
-        </section>
-
-        <!-- Modal-->
-         <section>
-            <div class="cart-btn" id="cart-btn">🛒</div>
-            <span class="cart-counter" id="cart-counter">0</span>
-            <div class="modal-overlay" id="modal-overlay"></div>
-            <div class="modal-container" id="modal-container"></div>
-         </section>
-        
-
-        <!-- Pie de pagina -->
-        <section id="footer">
-            <div class="container">
-                <header>
-                    <h2>¿Preguntas o comentarios? <strong>Contáctanos:</strong></h2>
-                </header>
+            <div class="col-6 col-12-medium">
+              <section>
+                <p>
+                  ¡Gracias por visitar Such Great Food! Estamos aquí para
+                  brindarte la mejor experiencia en comidas y bebidas. No dudes
+                  en contactarnos para cualquier consulta.
+                </p>
                 <div class="row">
-                    <div class="col-6 col-12-medium">
-                        <section>
-                            <form method="post" action="#">
-                                <div class="row gtr-50">
-                                    <div class="col-6 col-12-small">
-                                        <input name="name" placeholder="Nombre" type="text" />
-                                    </div>
-                                    <div class="col-6 col-12-small">
-                                        <input name="email" placeholder="Email" type="text" />
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea name="message" placeholder="Mensaje"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button type="submit" class="form-button-submit">Enviar Mensaje</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </section>
-                    </div>
-                    <div class="col-6 col-12-medium">
-                        <section>
-                            <p>¡Gracias por visitar Such Great Food! Estamos aquí para brindarte la mejor experiencia 
-                               en comidas y bebidas. No dudes en contactarnos para cualquier consulta.</p>
-                            <div class="row">
-                                <div class="col-6 col-12-small">
-                                    <ul class="contact-info">
-                                        <li>
-                                            <i class="fas fa-home"></i>
-                                            Av. Such Great Food<br />
-                                            Such Great Food, Argentina
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-phone"></i>
-                                            +54 9 11 4444-5555
-                                        </li>
-                                        <li>
-                                            <i class="fas fa-envelope"></i>
-                                            <a href="mailto:info@suchgreatfood.com">info@suchgreatfood.com</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <div class="col-6 col-12-small">
-                                    <ul class="social-links">
-                                        <li>
-                                            <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fab fa-facebook-f"></i> Facebook</a>
-                                        </li>
-                                        <li>
-                                            <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
+                  <div class="col-6 col-12-small">
+                    <ul class="contact-info">
+                      <li>
+                        <i class="fas fa-home"></i>
+                        Av. Such Great Food<br />
+                        Such Great Food, Argentina
+                      </li>
+                      <li>
+                        <i class="fas fa-phone"></i>
+                        +54 9 11 4444-5555
+                      </li>
+                      <li>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:info@suchgreatfood.com"
+                          >info@suchgreatfood.com</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <div class="col-6 col-12-small">
+                    <ul class="social-links">
+                      <li>
+                        <a href="#"
+                          ><i class="fab fa-instagram"></i> Instagram</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#"
+                          ><i class="fab fa-facebook-f"></i> Facebook</a
+                        >
+                      </li>
+                      <li>
+                        <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
+              </section>
             </div>
-            <div id="copyright" class="container">
-                <ul class="links">
-                    <li>&copy; 2024 Such Great Food. Todos los derechos reservados.</li>
-                </ul>
-            </div>
-        </section>
+          </div>
+        </div>
+        <div id="copyright" class="container">
+          <ul class="links">
+            <li>&copy; 2024 Such Great Food. Todos los derechos reservados.</li>
+          </ul>
+        </div>
+      </section>
     </div>
 
     <!-- Scripts -->
     <script src="./js/productos.js"></script>
     <script src="./js/cart.js" defer></script>
-    <script src="./js/authentication.js"></script>
-    <script src="./js/tokenUsuario.js"></script>
+
     <script src="./js/menu.js"></script>
     <script src="./js/usuarios.js"></script>
-</body>
+  </body>
 </html>

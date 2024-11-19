@@ -106,7 +106,7 @@ app.get("/usuarios.html", (req, res) => {
 });
 
 // Ruta para acceder a usuarioLocal (requiere autenticación)
-app.get("/usuarioLocal.html", verifyToken, (req, res) => {
+app.get("/usuarioLocal.html", verifyTokenAdmin, (req, res) => {
   res.sendFile(path.join(__dirname, "../Client/usuarioLocal.html"));
 });
 
@@ -135,4 +135,3 @@ app.post("/message", message); // Prefijo para las rutas de la API
 app.listen(port, () => {
   console.log(`Servidor corriendo en http://localhost:${port}`);
 });
-  

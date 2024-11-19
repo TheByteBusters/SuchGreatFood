@@ -29,7 +29,6 @@ export const loginUser = async (req, res) => {
 
     // Generar el token JWT con el rol del usuario
     const token = jwt.sign({ id: user[0].id, rol: user[0].rol }, secret, {
-      // función ternaria
       expiresIn: "1h",
     });
 
