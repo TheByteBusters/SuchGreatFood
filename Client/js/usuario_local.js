@@ -8,81 +8,6 @@ function ocultarFormulario() {
     document.getElementById("formularioProducto").style.display = "none";
 }
 
-// Función para agregar un nuevo producto
-function agregarProducto() {
-    // Obtener los valores de los campos de entrada
-    const nombre = document.getElementById("nombreProducto").value;
-    const precio = document.getElementById("precioProducto").value;
-    const stock = document.getElementById("stockProducto").value;
-    const extra = document.getElementById("extraProducto").value;
-
-    // Crear una nueva fila en la tabla
-    const tabla = document.getElementById("productos");
-    const nuevaFila = tabla.insertRow();
-
-    // Insertar celdas en la nueva fila
-    const celdaNombre = nuevaFila.insertCell(0);
-    const celdaPrecio = nuevaFila.insertCell(1);
-    const celdaStock = nuevaFila.insertCell(2);
-    const celdaExtra = nuevaFila.insertCell(3);
-    const celdaAcciones = nuevaFila.insertCell(4);
-
-    // Asignar los valores a las celdas
-    celdaNombre.innerText = nombre;
-    celdaPrecio.innerText = precio;
-    celdaStock.innerText = stock;
-    celdaExtra.innerText = extra;
-
-    // Crear botones de editar y eliminar
-    celdaAcciones.innerHTML = `
-        <button onclick="editarProducto(this)">✏️ Editar</button>
-        <button onclick="eliminarProducto(this)">❌ Eliminar</button>
-    `;
-
-    // Limpiar los campos de entrada
-    document.getElementById("nombreProducto").value = "";
-    document.getElementById("precioProducto").value = "";
-    document.getElementById("stockProducto").value = "";
-    document.getElementById("extraProducto").value = "";
-
-    // Ocultar el formulario después de agregar el producto
-    ocultarFormulario();
-}
-
-// Función para eliminar un producto
-function eliminarProducto(button) {
-    const row = button.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-}
-
-// Función para editar un producto
-function editarProducto(button) {
-    const row = button.parentNode.parentNode;
-    const celdas = row.getElementsByTagName("td");
-
-    for (let i = 0; i < celdas.length - 1; i++) {
-        const valorActual = celdas[i].innerText;
-        celdas[i].innerHTML = `<input type="text" value="${valorActual}" />`;
-    }
-
-    button.innerText = "💾 Guardar";
-    button.setAttribute("onclick", "guardarProducto(this)");
-}
-
-// Función para guardar los cambios de un producto
-function guardarProducto(button) {
-    const row = button.parentNode.parentNode;
-    const celdas = row.getElementsByTagName("td");
-
-    for (let i = 0; i < celdas.length - 1; i++) {
-        const input = celdas[i].getElementsByTagName("input")[0];
-        celdas[i].innerText = input.value;
-    }
-
-    button.innerText = "✏️ Editar";
-    button.setAttribute("onclick", "editarProducto(this)");
-}
-
 // Funciones para Ingredientes
 function mostrarFormularioIngrediente() {
     document.getElementById("formularioIngrediente").style.display = "block";
@@ -162,39 +87,6 @@ function ocultarFormularioProducto() {
     document.getElementById("formularioProducto").style.display = "none";
 }
 
-function agregarProducto() {
-    const nombre = document.getElementById("nombreProducto").value;
-    const ingredientes = document.getElementById("ingredientesProducto").value;
-    const precio = document.getElementById("precioProducto").value;
-    const cantidad = document.getElementById("cantidadProducto").value;
-
-    const tabla = document.getElementById("productos");
-    const nuevaFila = tabla.insertRow();
-
-    const celdaNombre = nuevaFila.insertCell(0);
-    const celdaIngredientes = nuevaFila.insertCell(1);
-    const celdaPrecio = nuevaFila.insertCell(2);
-    const celdaCantidad = nuevaFila.insertCell(3);
-    const celdaAcciones = nuevaFila.insertCell(4);
-
-    celdaNombre.innerText = nombre;
-    celdaIngredientes.innerText = ingredientes;
-    celdaPrecio.innerText = precio;
-    celdaCantidad.innerText = cantidad;
-
-    celdaAcciones.innerHTML = `
-        <button onclick="editarProducto(this)">✏️ Editar</button>
-        <button onclick="eliminarProducto(this)">❌ Eliminar</button>
-    `;
-
-    // Limpiar campos
-    document.getElementById("nombreProducto").value = "";
-    document.getElementById("ingredientesProducto").value = "";
-    document.getElementById("precioProducto").value = "";
-    document.getElementById("cantidadProducto").value = "";
-
-    ocultarFormularioProducto();
-}
 
 function eliminarProducto(button) {
     const row = button.parentNode.parentNode;
@@ -234,15 +126,19 @@ function cerrarSesion() {
 }
 
 
-document.getElementById("agregarProducto").addEventListener("click", async () => {
+async function agregarProductos() {
+
+
     const nuevoProducto = {
-        category: prompt("Categoría:"),
-        productName: prompt("Nombre del producto:"),
-        price: prompt("Precio:"),
-        details: prompt("Detalles:"),
-        ingredients: prompt("Ingredientes:"),
-        img: prompt("URL de la imagen:")
+        category: document.getElementById("categoriaProducto").value,
+        productName: document.getElementById("nombreProducto").value,
+        price: document.getElementById("precioProducto").value,
+        details: document.getElementById("detallesProducto").value,
+        ingredients: document.getElementById("ingredientesProducto").value,
+        img: document.getElementById("imagenProducto").value
     };
+
+    
 
     if (nuevoProducto.productName && nuevoProducto.price) {
         try {
@@ -256,6 +152,9 @@ document.getElementById("agregarProducto").addEventListener("click", async () =>
 
             const data = await response.json();
             alert(data.message || "Producto agregado");
+            const tabla = document.getElementById("productos");
+            tabla.innerHTML = "";
+
         } catch (error) {
             console.error(error);
             alert("Error al agregar el producto");
@@ -263,65 +162,81 @@ document.getElementById("agregarProducto").addEventListener("click", async () =>
     } else {
         alert("El nombre y el precio son obligatorios.");
     }
-});
+
+
+    // Limpiar los campos de entrada
+    document.getElementById("nombreProducto").value = "";
+    document.getElementById("precioProducto").value = "";
+    document.getElementById("ingredientesProducto").value = "";
+    document.getElementById("detallesProducto").value = "";
+    document.getElementById("imagenProducto").value = "";
+
+
+    // Ocultar el formulario después de agregar el producto
+    ocultarFormulario();
+    obtenerProductos();
+};
 
 async function obtenerProductos() {
     try {
         const response = await fetch('/products'); 
         const productos = await response.json();
 
-        const contenedor = document.getElementById("productos-container"); 
-
-        // Limpia el contenedor antes de agregar nuevos productos
-        contenedor.innerHTML = '';
 
         productos.forEach(producto => {
-            const card = document.createElement('div');
-            card.className = 'card-productos';
+
+            // Crear una nueva fila en la tabla
+            const tabla = document.getElementById("productos");
+            const nuevaFila = tabla.insertRow();
+
+            // Insertar celdas en la nueva fila
+            const celdaImagen = nuevaFila.insertCell(0);
+            const celdaCategoria = nuevaFila.insertCell(1);
+            const celdaNombre = nuevaFila.insertCell(2);
+            const celdaPrecio = nuevaFila.insertCell(3);
+            const celdaDetalles = nuevaFila.insertCell(4);
+            const celdaIngredientes = nuevaFila.insertCell(5);
+            const celdaAcciones = nuevaFila.insertCell(6);
+
+            celdaAcciones.id = "celdaAcciones";
+
+            // Asignar los valores a las celdas
+            const imgSrc = producto.img ? producto.img : 'imagenes/Logo2.png';
+
+            celdaImagen.innerHTML = `
+                <img src="/imagenes/productos/${imgSrc}" width="150px" height="150px" onerror="this.src='imagenes/Logo2.png';"></img>
+            `
+            celdaCategoria.innerText = producto.category;
+            celdaNombre.innerText = producto.productName;
+            celdaPrecio.innerText = producto.price;
+            celdaIngredientes.innerText = producto.ingredients;
+            celdaDetalles.innerText = producto.details;
+            
 
             // Botón Eliminar
             const botonEliminar = document.createElement('button');
             botonEliminar.textContent = '❌ Eliminar Producto';
             botonEliminar.addEventListener('click', () => eliminarProducto(producto.id));
-            card.appendChild(botonEliminar);
+            celdaAcciones.appendChild(botonEliminar);
 
             // Botón Editar
             const botonEditar = document.createElement('button');
             botonEditar.textContent = '✏️ Editar Producto';
             botonEditar.addEventListener('click', () => editarProducto(producto));
-            card.appendChild(botonEditar);
+            celdaAcciones.appendChild(botonEditar);
 
-            card.appendChild(document.createElement('br'));
+            celdaAcciones.appendChild(document.createElement('br'));
 
-            // Imagen del producto
+           /*  // Imagen del producto
             const imagen = document.createElement('img');
             imagen.src = producto.img || 'https://via.placeholder.com/150';
             imagen.alt = producto.productName;
             imagen.width = 150;
             imagen.height = 150;
-            card.appendChild(imagen);
+            card.appendChild(imagen); */
 
-            // Precio del producto
-            const precio = document.createElement('p');
-            precio.textContent = `PRECIO DEL PRODUCTO: $${producto.price}`;
-            card.appendChild(precio);
-
-            // Nombre del producto
-            const nombre = document.createElement('p');
-            nombre.textContent = `NOMBRE DEL PRODUCTO: ${producto.productName}`;
-            card.appendChild(nombre);
-
-            // Detalles del producto
-            const detalles = document.createElement('p');
-            detalles.textContent = `DETALLES DEL PRODUCTO: ${producto.details}`;
-            card.appendChild(detalles);
-
-            // Ingredientes del producto
-            const ingredientes = document.createElement('p');
-            ingredientes.textContent = `INGREDIENTES DEL PRODUCTO: ${producto.ingredients}`;
-            card.appendChild(ingredientes);
-
-            contenedor.appendChild(card);
+            
+        
         });
     } catch (error) {
         console.error('Error al obtener los productos:', error);
@@ -330,16 +245,20 @@ async function obtenerProductos() {
 
 // Función para eliminar producto
 async function eliminarProducto(id) {
+
+
     if (confirm('¿Seguro que quieres eliminar este producto?')) {
         try {
             const response = await fetch(`/products/${id}`, {
                  method: 'DELETE',
                  headers: {
-                    'Authorization': `Bearer ${token}` 
+                    'Authorization': `Bearer ${sessionStorage.getItem('token')}` 
                 } });
             const data = await response.json();
             alert(data.message || 'Producto eliminado');
-            obtenerProductos(); // Refresca la lista de productos
+            const tabla = document.getElementById("productos");
+            tabla.innerHTML = "";
+            obtenerProductos();
         } catch (error) {
             console.error('Error al eliminar el producto:', error);
         }
@@ -348,6 +267,7 @@ async function eliminarProducto(id) {
 
 // Función para editar producto
 async function editarProducto(producto) {
+
     
      // Capturar los datos actuales del producto y permitir al usuario editarlos
      const nuevosDatos = {
@@ -361,11 +281,12 @@ async function editarProducto(producto) {
 
     try {
         // Enviar los datos actualizados al backend
+        console.log("Producto id: " + producto.id);
         const response = await fetch(`/products/${producto.id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('token')}` // Incluye el token si es necesario
+                'Authorization': `Bearer ${sessionStorage.getItem('token')}` // Incluye el token si es necesario
             },
             body: JSON.stringify(nuevosDatos),
         });
@@ -374,6 +295,8 @@ async function editarProducto(producto) {
             const data = await response.json();
             alert(data.message || "Producto actualizado correctamente.");
             // Opcional: Refrescar la lista de productos
+            const tabla = document.getElementById("productos");
+            tabla.innerHTML = "";
             obtenerProductos();
         } else {
             const error = await response.json();
@@ -385,6 +308,8 @@ async function editarProducto(producto) {
     }
     
 }
+
+
 
 // Llama a la función al cargar la página
 document.addEventListener('DOMContentLoaded', obtenerProductos);
