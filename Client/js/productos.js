@@ -93,5 +93,7 @@ function renderMenu(category) {
     }
 }
 
+
+
 // Llamar a la función al cargar la página
 window.onload = fetchProducts;

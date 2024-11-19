@@ -14,7 +14,7 @@ import {
   updateProduct,
   deleteProduct,
 } from "./controllers/productController.js";
-import { verifyToken } from "./authMiddleware.js";
+import { verifyToken, verifyTokenAdmin } from "./authMiddleware.js";
 import pool from "./db/dbConnection.js";
 import { config } from "./config.js";
 
@@ -123,9 +123,9 @@ app.get("/products/:id", getProductById); // Buscar por id
 
 app.post("/products", createProduct); // Crear producto
 
-app.put("/products/:id", verifyToken, updateProduct); // Modificar producto
+app.put("/products/:id", verifyTokenAdmin, updateProduct); // Modificar producto
 
-app.delete("/products/:id", verifyToken, deleteProduct); // Eliminar producto
+app.delete("/products/:id", deleteProduct); // Eliminar producto
 
 app.post("/create_preference", cartController); // Ruta preferencia de pago
 
