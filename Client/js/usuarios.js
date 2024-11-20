@@ -4,6 +4,24 @@ document.addEventListener("DOMContentLoaded", () => {
   sessionStorage.removeItem("userId");
   sessionStorage.removeItem("token");
 
+  const logout = document.getElementById("logout");
+
+  // cerrar sesión
+  logout.addEventListener("click", () => {
+    window.location.href = "./index.html";
+  });
+
+  setTimeout(() => {
+    const pantallaNegra = document.getElementById("pantalla-negra");
+    pantallaNegra.style.transition = "opacity 0.5s ease"; // Suaviza la desaparición
+    pantallaNegra.style.opacity = "0"; // Oculta visualmente
+
+    // Oculta el elemento después de la transición
+    setTimeout(() => {
+      pantallaNegra.style.display = "none";
+    }, 1500); // Tiempo de la transición
+  }, 3000); // Espera 3 segundos
+
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
 

@@ -1,0 +1,35 @@
+#pantalla-negra {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: orange; /* Fondo claro */
+  z-index: 10000;
+  display: flex; /* Para centrar el spinner */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+}
+
+.spinner {
+  width: 50px; /* Tamaño del spinner */
+  height: 50px;
+  border: 5px solid rgba(0, 0, 0, 0.1); /* Bordes más claros */
+  border-top: 5px solid #333; /* Borde superior más oscuro */
+  border-radius: 50%; /* Hacerlo circular */
+  animation: spin 1s linear infinite; /* Animación */
+}
+p {
+  text-align: center;
+  text-justify: auto;
+}
+
+/* Animación de rotación */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

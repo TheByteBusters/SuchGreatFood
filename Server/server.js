@@ -101,7 +101,7 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../Client/index.html"));
 });
 
-app.get("/usuarios.html", (req, res) => {
+app.get("/usuarios.html", verifyToken, (req, res) => {
   res.sendFile(path.join(__dirname, "../Client/usuarios.html"));
 });
 
@@ -125,7 +125,7 @@ app.post("/products", createProduct); // Crear producto
 
 app.put("/products/:id", verifyTokenAdmin, updateProduct); // Modificar producto
 
-app.delete("/products/:id", deleteProduct); // Eliminar producto
+app.delete("/products/:id", verifyTokenAdmin, deleteProduct); // Eliminar producto
 
 app.post("/create_preference", cartController); // Ruta preferencia de pago
 
