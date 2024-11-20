@@ -60,11 +60,22 @@
         
         <div id="formularioProducto" style="display: none;">
             <h4>Agregar Nuevo Producto</h4>
+            <p>Categoría:
+                <select id="categoriaProducto">
+                    <option value="" disabled selected>Selecciona una categoría</option>
+                    <option value="lomos">Lomos</option>
+                    <option value="hamburguesas">Hamburguesasa</option>
+                    <option value="empanadas">Empanadas</option>
+                    <option value="bebidas">Bebidas</option>
+                    <option value="postres">Postres</option>
+                </select>
+            </p>
             <p>Nombre: <input type="text" id="nombreProducto" /></p>
-            <p>Ingredientes: <input type="text" id="ingredientesProducto" placeholder="Ej: tomate, lechuga" /></p>
             <p>Precio: <input type="number" id="precioProducto" /></p>
-            <p>Cantidad: <input type="number" id="cantidadProducto" /></p>
-            <button onclick="agregarProducto()">Agregar</button>
+            <p>Detalles: <input type="text" id="detallesProducto" /></p>
+            <p>Ingredientes: <input type="text" id="ingredientesProducto" placeholder="Ej: tomate, lechuga" /></p>
+            <p>Imagen: <input type="link" id="imagenProducto"/></p>
+            <button onclick="agregarProductos()">Agregar</button>
             <button onclick="ocultarFormularioProducto()">Cancelar</button>
         </div>
 
@@ -72,10 +83,14 @@
             <table>
                 <thead class="encabezado-tabla">
                     <tr>
+                        <th>Imagen</th>
+                        <th>Categoría</th>
                         <th>Producto</th>
-                        <th>Ingredientes</th>
                         <th>Precio</th>
-                        <th>Cantidad</th>
+                        <th>Detalles</th>
+                        <th>Ingredientes</th>
+
+
                         <th>Acciones</th>
                     </tr>
                 </thead>

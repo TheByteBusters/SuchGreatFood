@@ -17,7 +17,7 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -44,6 +44,7 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
+
 
 body {
 	-webkit-text-size-adjust: none;
@@ -1954,13 +1955,26 @@ input, select, textarea {
 			}
 
 		table td {
+			
 			padding: 0.75em 1em 0.75em 1em;
 		}
 
+		#celdaAcciones {
+			text-align: center;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-evenly;
+		}
+
+		#celdaAcciones button {
+			margin-top: 1em;
+		}
+
 		table th {
-			text-align: left;
+			text-align: center;
 			font-weight: bold;
 			padding: 0.75em 1em 0.75em 1em;
+			
 		}
 
 		table thead {
@@ -2009,6 +2023,7 @@ input, select, textarea {
 		font-size: 0.85em;
 		letter-spacing: 2px;
 		padding: 0.85em 2.75em 0.85em 2.75em;
+		margin-bottom: 1em;
 	}
 
 		input[type="button"].icon:before,
