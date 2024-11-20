@@ -22,18 +22,20 @@
                 <button id="logout" onclick="cerrarSesion()">Cerrar Sesión</button>          
             </div>
 
-    <div class="ingredientes-local">
-        <h3>Lista de Ingredientes en Stock</h3>
-        <button onclick="mostrarFormularioIngrediente()">➕ Agregar Ingrediente</button>
-        
-        <div id="formularioIngrediente" style="display: none;">
-            <h4>Agregar Nuevo Ingrediente</h4>
-            <p>Nombre: <input type="text" id="nombreIngrediente" /></p>
-            <p>Cantidad: <input type="number" id="cantidadIngrediente" /></p>
-            <p>Precio: <input type="number" id="precioIngrediente" /></p>
-            <button onclick="agregarIngrediente()">Agregar</button>
-            <button onclick="ocultarFormularioIngrediente()">Cancelar</button>
-        </div>
+<!-- Sección de ingredientes locales
+        <div class="ingredientes-local">
+            <h3>Lista de Ingredientes en Stock</h3>
+            <button onclick="mostrarFormularioIngrediente()">➕ Agregar Ingrediente</button>
+
+            <div id="formularioIngrediente" style="display: none;">
+                <h4>Agregar Nuevo Ingrediente</h4>
+
+                <p>Nombre: <input type="text" id="nombreIngrediente" /></p>
+                <p>Cantidad: <input type="number" id="cantidadIngrediente" /></p>
+                <p>Precio: <input type="number" id="precioIngrediente" /></p>
+                <button onclick="agregarIngrediente()">Agregar</button>
+                <button onclick="ocultarFormularioIngrediente()">Cancelar</button>
+            </div>
 
         <div class="card-lista-ingredientes-local">
             <table>
@@ -46,35 +48,49 @@
                     </tr>
                 </thead>
                 <tbody id="ingredientes">
-                    <!-- Ingredientes se agregarán aquí -->
                 </tbody>
             </table>
         </div>
     </div>
+-->
 
     <div class="productos-local">
         <h3>Lista de Productos</h3>
-        <button onclick="mostrarFormularioProducto()">➕ Agregar Producto</button>
+        <button class="btn-agregar" onclick="mostrarFormularioProducto()">➕ Agregar Producto</button>
         
-        <div id="formularioProducto" style="display: none;">
+        <div id="formularioProducto" class="formulario-producto" style="display: none;">
             <h4>Agregar Nuevo Producto</h4>
-            <p>Categoría:
-                <select id="categoriaProducto">
+            <form id="nuevoProductoForm" onsubmit="agregarProductos(); return false;">
+                <label for="categoriaProducto">Categoría:</label>
+                <select id="categoriaProducto" required>
                     <option value="" disabled selected>Selecciona una categoría</option>
                     <option value="lomos">Lomos</option>
-                    <option value="hamburguesas">Hamburguesasa</option>
+                    <option value="hamburguesas">Hamburguesas</option>
                     <option value="empanadas">Empanadas</option>
                     <option value="bebidas">Bebidas</option>
                     <option value="postres">Postres</option>
                 </select>
-            </p>
-            <p>Nombre: <input type="text" id="nombreProducto" /></p>
-            <p>Precio: <input type="number" id="precioProducto" /></p>
-            <p>Detalles: <input type="text" id="detallesProducto" /></p>
-            <p>Ingredientes: <input type="text" id="ingredientesProducto" placeholder="Ej: tomate, lechuga" /></p>
-            <p>Imagen: <input type="link" id="imagenProducto"/></p>
-            <button onclick="agregarProductos()">Agregar</button>
-            <button onclick="ocultarFormularioProducto()">Cancelar</button>
+
+                <label for="nombreProducto">Nombre:</label>
+                <input type="text" id="nombreProducto" required />
+
+                <label for="precioProducto">Precio:</label>
+                <input type="number" id="precioProducto" required />
+
+                <label for="detallesProducto">Detalles:</label>
+                <input type="text" id="detallesProducto" />
+
+                <label for="ingredientesProducto">Ingredientes:</label>
+                <input type="text" id="ingredientesProducto" placeholder="Ej: tomate, lechuga" />
+
+                <label for="imagenProducto">Imagen:</label>
+                <input type="url" id="imagenProducto" />
+
+                <div class="form-buttons">
+                    <button type="submit">Agregar</button>
+                    <button type="button" onclick="ocultarFormularioProducto()">Cancelar</button>
+                </div>
+            </form>
         </div>
 
         <div class="card-lista-productos-local">
@@ -87,8 +103,6 @@
                         <th>Precio</th>
                         <th>Detalles</th>
                         <th>Ingredientes</th>
-
-
                         <th>Acciones</th>
                     </tr>
                 </thead>
