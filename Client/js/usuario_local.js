@@ -1,3 +1,6 @@
+// Llamar a verifyToken en páginas protegidas
+document.addEventListener("DOMContentLoaded", verifyToken);
+
 window.addEventListener("load", () => {
   setTimeout(() => {
     const pantallaNegra = document.getElementById("pantalla-negra");
@@ -25,6 +28,7 @@ function ocultarFormulario() {
 function mostrarFormularioIngrediente() {
   document.getElementById("formularioIngrediente").style.display = "block";
 }
+
 
 function ocultarFormularioIngrediente() {
   document.getElementById("formularioIngrediente").style.display = "none";

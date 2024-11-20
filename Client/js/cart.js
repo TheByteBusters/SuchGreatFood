@@ -3,6 +3,7 @@ const modalOverlay = document.getElementById("modal-overlay");
 const cartBtn = document.getElementById("cart-btn");
 const cartCounter = document.getElementById("cart-counter");
 
+// Muestra los productos en el carrito 
 const displayCart = async () => {
     modalContainer.innerHTML = "";
     modalContainer.style.display = "block";
@@ -25,6 +26,7 @@ const displayCart = async () => {
     modalHeader.append(modalTitle);
     modalContainer.append(modalHeader);
 
+    // Si hay productos, crea dinámicamente la vista del producto
     // Modal Body
     if (cart.length > 0) {
         cart.forEach((product) => {
@@ -32,7 +34,7 @@ const displayCart = async () => {
             modalBody.className = "modal-body";
             modalBody.innerHTML = `
                 <div class="product">
-                    <img class="product-img" src="${product.img}" />
+                    <img class="product-img" src="../imagenes/productos/${product.img}" />
                     <div class="product-info">
                         <h4>${product.productName}</h4>
                     </div>
@@ -83,6 +85,7 @@ const displayCart = async () => {
         `;
         modalContainer.append(modalFooter);
 
+        // Implementacion de Mercado Pago
         const mp = new MercadoPago("APP_USR-6db55bb2-15d2-4d05-9f79-c5872617959a", {
             locale: "es-AR",
         });
@@ -136,8 +139,11 @@ const displayCart = async () => {
     }
 };
 
+
+// Muestra el carrito al hacer click
 cartBtn.addEventListener("click", displayCart);
 
+// Elimina un producto del carrito
 const deleteCartProduct = (id) => {
     const foundId = cart.findIndex((element) => element.id === id);
     cart.splice(foundId, 1);
@@ -145,6 +151,7 @@ const deleteCartProduct = (id) => {
     displayCartCounter();
 };
 
+// Muestra la cantidad de productos en el carrito
 const displayCartCounter = () => {
     const cartLength = cart.reduce((acc, el) => acc + el.quanty, 0);
     if (cartLength > 0) {

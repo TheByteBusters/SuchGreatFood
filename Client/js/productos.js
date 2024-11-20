@@ -26,11 +26,13 @@ function displayProducts(products) {
         const productCard = document.createElement('div');
         productCard.className = 'product-card';
 
-        const defaultImg = "../imagenes/logo.jpg"; // Ruta de la imagen por defecto
+        const defaultImg = "logo.jpg"; // Ruta de la imagen por defecto
         const productImg = product.img ? product.img : defaultImg;
 
+        console.log(product.img);
+
         productCard.innerHTML = `
-            <img src="${productImg}" alt="${product.productName}" />
+            <img src="/imagenes/productos/${productImg}" alt="${product.productName}" />
             <div class="product-info">
                 <h4>${product.productName}</h4>
                 <p class="price">$${product.price}</p>
