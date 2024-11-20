@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="icon" href="./imagenes/logo.jpg">
-    <link rel="stylesheet" href="./css/loginForm.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-</head>
-<body>
+    <link rel="icon" href="./imagenes/logo.jpg" />
+    <link rel="stylesheet" href="./css/loginForm.css" />
+    <link rel="stylesheet" href="css/loading.css" />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="pantalla-negra">
+      <div class="spinner"></div>
+      <p>cargando...</p>
+    </div>
     <section>
-        <form id="contenedor-form" class="contenedor-form">
-            <div class="caja-p__form">
-                <p>Iniciar Sesión</p>
-            </div>
-            <div class="contenedor-login">
-                <input type="text" id="nombre_usuario" placeholder="Usuario">
-                <input type="password" id="password" placeholder="Contraseña">
-            </div>
-            <div class="contenedor-button">
-                <button type="submit">Acceder</button>
-            </div>
-            <div class="contenedor-p__login">
-                <p>¿Aún no tienes cuenta? <a href="./formRegister.html">Crear cuenta</a></p>
-            </div>
-        </form>
+      <form id="contenedor-form" class="contenedor-form">
+        <div class="caja-p__form">
+          <p>Iniciar Sesión</p>
+        </div>
+        <div class="contenedor-login">
+          <input type="text" id="nombre_usuario" placeholder="Usuario" />
+          <input type="password" id="password" placeholder="Contraseña" />
+        </div>
+        <div class="contenedor-button">
+          <button type="submit">Acceder</button>
+        </div>
+        <div class="contenedor-p__login">
+          <p>
+            ¿Aún no tienes cuenta?
+            <a href="./formRegister.html">Crear cuenta</a>
+          </p>
+        </div>
+      </form>
     </section>
     <!---<script type="module" src="../Server/controllers/loginController.js"></script> <!-- Verifica que la ruta sea correcta -->
     <script src="js/login.js"></script>
-</body>
+  </body>
 </html>

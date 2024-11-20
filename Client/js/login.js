@@ -1,3 +1,16 @@
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    const pantallaNegra = document.getElementById("pantalla-negra");
+    pantallaNegra.style.transition = "opacity 0.5s ease"; // Suaviza la desaparición
+    pantallaNegra.style.opacity = "0"; // Oculta visualmente
+
+    // Oculta el elemento después de la transición
+    setTimeout(() => {
+      pantallaNegra.style.display = "none";
+    }, 100); // Tiempo de la transición
+  }, 300); // Espera 3 segundos
+});
+
 // Manejo del formulario de inicio de sesión
 document
   .getElementById("contenedor-form")
@@ -28,8 +41,7 @@ document
     // Manejo de la respuesta del servidor
     if (response.ok) {
       // Guarda el token y userId en localStorage y sessionStorage
-      localStorage.setItem("token", data.token);
-      localStorage.setItem("userId", data.userId);
+
       sessionStorage.setItem("token", data.token);
       sessionStorage.setItem("userId", data.userId);
 
