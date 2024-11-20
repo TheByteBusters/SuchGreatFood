@@ -3,10 +3,10 @@
 
 /* Variables de color */
 :root {
-    --color-primary: orange;
-    --color-secondary: yellow;
+    --color-primary: #ffab91;
+    --color-secondary: #ffccbc;
     --color-background: #f9f9f9;
-    --color-text: black;
+    --color-text: #3e2723;
     --color-danger: #e74c3c;
     --color-shadow: rgba(0, 0, 0, 0.2);
     --container-max-width: 1200px;
@@ -46,25 +46,30 @@ body {
 }
 
 /* Estilos de botones */
-.btn {
+.btn,
+.button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
     background-color: var(--color-primary);
-    color: white;
-    padding: 12px;
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
-    transition: transform 0.2s ease-in-out, background-color 0.3s ease;
-    box-shadow: 0 2px 5px var(--color-shadow);
-    font-size: 18px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    color: var(--color-text);
+    padding: 12px 30px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    width: auto;
 }
 
-.btn:hover {
+.btn:hover,
+.button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+input[type="reset"]:hover {
     background-color: var(--color-secondary);
+    transform: scale(1.05);
 }
 
 /* Estilos de modal */
@@ -927,12 +932,14 @@ img.logo {
 
 /* Estilos de formulario */
 .formulario-producto {
-    margin: 20px 0;
+    margin: 20px auto;
     border: 1px solid #ddd;
     padding: 20px;
     background-color: var(--color-background);
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 90%;
 }
 
 .formulario-producto label {

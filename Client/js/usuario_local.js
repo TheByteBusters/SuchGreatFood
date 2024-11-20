@@ -215,13 +215,15 @@ async function obtenerProductos() {
 
             // Botón Eliminar
             const botonEliminar = document.createElement('button');
-            botonEliminar.textContent = '❌ Eliminar Producto';
+            botonEliminar.innerHTML = '<i class="fas fa-trash-alt"></i> Eliminar';
+            botonEliminar.classList.add('btn');
             botonEliminar.addEventListener('click', () => eliminarProducto(producto.id));
             celdaAcciones.appendChild(botonEliminar);
 
             // Botón Editar
             const botonEditar = document.createElement('button');
-            botonEditar.textContent = '✏️ Editar Producto';
+            botonEditar.innerHTML = '<i class="fas fa-edit"></i> Editar';
+            botonEditar.classList.add('btn');
             botonEditar.addEventListener('click', () => editarProducto(producto));
             celdaAcciones.appendChild(botonEditar);
 
