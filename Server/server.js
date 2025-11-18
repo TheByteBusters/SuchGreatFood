@@ -82,7 +82,8 @@ crearTablaUsuariosSiNoExiste();
 crearTablaProductosSiNoExiste();
 
 const app = express();
-const port = config.host || 8080;
+const port = config.serverPort || 8080;
+
 
 // Obtener el directorio actual en ES6
 const __filename = fileURLToPath(import.meta.url);
@@ -94,20 +95,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Servir archivos estáticos desde la carpeta Client
-app.use(express.static(path.join(__dirname, "../Client")));
+app.use(express.static(path.join(__dirname, "../client")));
 
 // Ruta para servir el formulario de login
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "../Client/index.html"));
+  res.sendFile(path.join(__dirname, "../client/index.html"));
 });
 
 app.get("/usuarios.html", verifyToken, (req, res) => {
-  res.sendFile(path.join(__dirname, "../Client/usuarios.html"));
+  res.sendFile(path.join(__dirname, "../client/usuarios.html"));
 });
 
 // Ruta para acceder a usuarioLocal (requiere autenticación)
 app.get("/usuarioLocal.html", verifyTokenAdmin, (req, res) => {
-  res.sendFile(path.join(__dirname, "../Client/usuarioLocal.html"));
+  res.sendFile(path.join(__dirname, "../client/usuarioLocal.html"));
 });
 
 // Ruta para registrar un usuario

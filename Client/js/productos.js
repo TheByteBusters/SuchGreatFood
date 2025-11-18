@@ -29,14 +29,18 @@ function displayProducts(products) {
         const defaultImg = "../imagenes/logo.jpg"; // Ruta de la imagen por defecto
         const productImg = product.img ? product.img : defaultImg;
 
+        const icon = categoryIcons[product.category.trim()] || categoryIcons.default;
+
         productCard.innerHTML = `
-            <img src="${productImg}" alt="${product.productName}" />
-            <div class="product-info">
-                <h4>${product.productName}</h4>
-                <p class="price">$${product.price}</p>
-                <p class="ingredients">Ingredientes: ${product.ingredients}</p>
+            <div class="product-icon-client">
+                <i class="fas ${icon}"></i>
             </div>
+
+            <h3>${product.productName}</h3>
+            <p>$${product.price}</p>
+            <p>Ingredientes: ${product.ingredients}</p>
         `;
+
 
         const buyButton = document.createElement("button");
         buyButton.innerText = "Buy";
@@ -57,12 +61,13 @@ function displayProducts(products) {
                 });
             } else {
                 cart.push({
-                    id: product.id,
-                    productName: product.productName,
-                    price: product.price,
-                    quanty: 1, // Inicializamos con cantidad 1
-                    img: product.img
-                });
+                id: product.id,
+                productName: product.productName,
+                price: product.price,
+                quanty: 1,
+                category: product.category.trim().toLowerCase()
+            });
+
                 console.log(`Product added to cart:`, product);
                 displayCartCounterIndex();
             }

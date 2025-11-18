@@ -31,20 +31,26 @@ const displayCart = async () => {
             const modalBody = document.createElement("div");
             modalBody.className = "modal-body";
             modalBody.innerHTML = `
-                <div class="product">
-                    <img class="product-img" src="${product.img}" />
-                    <div class="product-info">
-                        <h4>${product.productName}</h4>
-                    </div>
-                    <div class="quantity">
-                        <span class="quantity-btn-decrese">-</span>
-                        <span class="quantity-input">${product.quanty}</span>
-                        <span class="quantity-btn-increse">+</span>
-                    </div>
-                    <div class="price">${product.price * product.quanty} $</div>
-                    <div class="delete-product">❌</div>
+            <div class="product">
+                <div class="product-icon">
+                    <i class="fas ${categoryIcons[product.category] || categoryIcons.default}"></i>
                 </div>
-            `;
+
+                <div class="product-info">
+                    <h4>${product.productName}</h4>
+                </div>
+
+                <div class="quantity">
+                    <span class="quantity-btn-decrese">-</span>
+                    <span class="quantity-input">${product.quanty}</span>
+                    <span class="quantity-btn-increse">+</span>
+                </div>
+
+                <div class="price">${product.price * product.quanty} $</div>
+                <div class="delete-product">❌</div>
+            </div>
+        `;
+
             modalContainer.append(modalBody);
 
             // Decrease
@@ -137,6 +143,28 @@ const displayCart = async () => {
 };
 
 cartBtn.addEventListener("click", displayCart);
+
+const categoryIcons = {
+    lomos: "fa-drumstick-bite",
+    LOMOS: "fa-drumstick-bite",
+
+    hamburguesas: "fa-hamburger",
+    HAMBURGUESAS: "fa-hamburger",
+
+    empanadas: "fa-pizza-slice",
+    EMPANADAS: "fa-pizza-slice",
+
+    bebidas: "fa-wine-bottle",
+    BEBIDAS: "fa-wine-bottle",
+
+    postres: "fa-ice-cream",
+    POSTRES: "fa-ice-cream",
+
+    default: "fa-utensils"
+};
+
+
+
 
 const deleteCartProduct = (id) => {
     const foundId = cart.findIndex((element) => element.id === id);

@@ -5,12 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>APP PROYECTO ECOMMERCE</title>
-    <script src="./js/authentication.js"></script>
-    <script src="./js/tokenUsuario.js"></script>
-    <link rel="stylesheet" href="css/usuarioLocal.css">
-    <link rel="stylesheet" href="js/usuario_local.js">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- JS siempre con <script> -->
+    <script src="/js/authentication.js" defer></script>
+    <script src="/js/tokenUsuario.js" defer></script>
+    <!-- CSS siempre con <link rel="stylesheet"> -->
+    <link rel="stylesheet" href="/css/usuarioLocal.css">
+    <!-- FontAwesome (CDN) correcto -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
+
 <body class="homepage is-preload">
     <div id="pantalla-negra">
         <div class="spinner"></div>
@@ -92,9 +96,6 @@
 
                 <label for="ingredientesProducto">Ingredientes:</label>
                 <input type="text" id="ingredientesProducto" placeholder="Ej: tomate, lechuga" />
-
-                <label for="imagenProducto">Imagen:</label>
-                <input type="url" id="imagenProducto" />
 
                 <div class="form-buttons">
                     <button type="submit" class="btn">Agregar</button>

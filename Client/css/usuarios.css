@@ -3637,3 +3637,49 @@ img.logo {
     margin-bottom: 30px;
   }
 }
+.product-icon-client {
+    font-size: 90px;
+    color: #ff9900;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+/* --- FIX PARA BOTONES DE CANTIDAD (- y +) --- */
+
+.quantity {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.quantity-btn-decrese,
+.quantity-btn-increse {
+    background: #ff9900;
+    color: white;
+    cursor: pointer;
+    font-size: 22px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    transition: 0.2s ease;
+}
+
+.quantity-btn-decrese:hover,
+.quantity-btn-increse:hover {
+    background: #e57f00;
+    transform: scale(1.1);
+}
+
+.quantity-input {
+    font-size: 18px;
+    width: 45px;
+    text-align: center;
+    color: black;
+    font-weight: bold;
+}
