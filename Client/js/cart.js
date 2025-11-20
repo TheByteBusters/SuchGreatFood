@@ -3,6 +3,8 @@ const modalOverlay = document.getElementById("modal-overlay");
 const cartBtn = document.getElementById("cart-btn");
 const cartCounter = document.getElementById("cart-counter");
 
+
+
 const displayCart = async () => {
     modalContainer.innerHTML = "";
     modalContainer.style.display = "block";
@@ -89,7 +91,7 @@ const displayCart = async () => {
         `;
         modalContainer.append(modalFooter);
 
-        const mp = new MercadoPago("APP_USR-6db55bb2-15d2-4d05-9f79-c5872617959a", {
+        const mp = new MercadoPago("TEST-c43f74fa-d753-4fe4-9352-01dce84f4524", {
             locale: "es-AR",
         });
 
